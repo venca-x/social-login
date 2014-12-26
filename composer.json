@@ -1,0 +1,15 @@
+{
+  "name": "venca-x/social-login",
+  "description": "Nette addon. Login with social networks ( Faceboook, Google, Twitter )",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "vEnCa-X",
+      "email": "venca-x@seznam.cz"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "classmap": ["src/"]
+  }
+}
