@@ -5,7 +5,7 @@ namespace Vencax;
 use Nette;
 use Vencax;
 
-class SocialLogin extends Nette\Object
+class SocialLogin extends BaseLogin
 {
 
     /**

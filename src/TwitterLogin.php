@@ -11,9 +11,12 @@ use Exception;
  * Class TwitterLogin
  * @package Vencax
  */
-class TwitterLogin extends Nette\Object
+class TwitterLogin extends BaseLogin
 {
-    /** @var Config params */
+
+    const SOCIAL_NAME = "twitter";
+
+    /** @var config params */
     private $params;
 
     /** @var \TwitterOAuth */
@@ -115,8 +118,26 @@ class TwitterLogin extends Nette\Object
 
         $user_info = $this->twitterOAuth->get( 'account/verify_credentials' );
 
+        $this->setSocialLoginCookie( self::SOCIAL_NAME );
+
         return $user_info;
 
+    }
+
+    /**
+     * Is user last login with this service<
+     * @return bool
+     */
+    public function isThisServiceLastLogin()
+    {
+        if( $this->getSocialLoginCookie() == self::SOCIAL_NAME )
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
     }
 
 }

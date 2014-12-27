@@ -15,8 +15,10 @@ use Exception;
  * Class FacebookLogin
  * @package Vencax
  */
-class FacebookLogin extends Nette\Object
+class FacebookLogin extends BaseLogin
 {
+
+    const SOCIAL_NAME = "facebook";
 
     /** @var FacebookRedirectLoginHelper */
     private $helper;
@@ -43,10 +45,9 @@ class FacebookLogin extends Nette\Object
     /**
      * Get URL for login
      * @param string $callbackURL
-     * @param $scope
      * @return string URL login
      */
-    public function getLoginUrl( $scope )
+    public function getLoginUrl()
     {
         $loginUrl = $this->helper->getLoginUrl( array( 'scope' => $this->scope ) );
         return $loginUrl;
@@ -67,6 +68,8 @@ class FacebookLogin extends Nette\Object
                 ->execute()
                 ->getGraphObject( Facebook\GraphUser::className() );
 
+            $this->setSocialLoginCookie( self::SOCIAL_NAME );
+
             return $me;
         }
         catch ( FacebookRequestException $e )
@@ -80,6 +83,22 @@ class FacebookLogin extends Nette\Object
         catch ( Exception $e )
         {
             throw new Exception( $e->getMessage() );
+        }
+    }
+
+    /**
+     * Is user last login with this service<
+     * @return bool
+     */
+    public function isThisServiceLastLogin()
+    {
+        if( $this->getSocialLoginCookie() == self::SOCIAL_NAME )
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
         }
     }
 

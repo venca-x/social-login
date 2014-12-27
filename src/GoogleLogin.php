@@ -5,8 +5,11 @@ namespace Vencax;
 use Nette;
 use Exception;
 
-class GoogleLogin extends Nette\Object
+class GoogleLogin extends BaseLogin
 {
+
+    const SOCIAL_NAME = "google";
+
     /** @var array params */
     private $params;
 
@@ -71,7 +74,25 @@ class GoogleLogin extends Nette\Object
             throw new Exception( $e->getMessage() );
         }
 
+        $this->setSocialLoginCookie( self::SOCIAL_NAME );
+
         return $user;
+    }
+
+    /**
+     * Is user last login with this service<
+     * @return bool
+     */
+    public function isThisServiceLastLogin()
+    {
+        if( $this->getSocialLoginCookie() == self::SOCIAL_NAME )
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
     }
 
 }
