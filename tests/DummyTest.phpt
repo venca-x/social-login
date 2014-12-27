@@ -1,37 +1,11 @@
 <?php
+use Tester\Assert;
 
-namespace Test;
+# require tester library
+require __DIR__ . '/../vendor/autoload.php';          #install with composer
 
-use Nette,
-	Tester,
-	Tester\Assert;
+# Konfigurace prostredi velmi zprehledni vypisy chyb.
+# Nemusite pouzit, pokud preferujete vychozi vypis PHP.
+Tester\Environment::setup();
 
-$container = require __DIR__ . '/bootstrap.php';
-
-
-class ExampleTest extends Tester\TestCase
-{
-	private $container;
-
-
-	function __construct(Nette\DI\Container $container)
-	{
-		$this->container = $container;
-	}
-
-
-	function setUp()
-	{
-	}
-
-
-	function testSomething()
-	{
-		Assert::true( true );
-	}
-
-}
-
-
-$test = new DummyTest($container);
-$test->run();
+Assert::true( true );
