@@ -1,6 +1,15 @@
 social-login
 ===============
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/venca-x/social-login/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/venca-x/social-login/?branch=master)
+[![Build Status](https://travis-ci.org/venca-x/social-login.svg)](https://travis-ci.org/venca-x/social-login) 
+[![Latest Stable Version](https://poser.pugx.org/venca-x/social-login/v/stable.svg)](https://packagist.org/packages/venca-x/social-login) 
+[![Total Downloads](https://poser.pugx.org/venca-x/social-login/downloads.svg)](https://packagist.org/packages/venca-x/social-login) 
+[![Latest Unstable Version](https://poser.pugx.org/venca-x/social-login/v/unstable.svg)](https://packagist.org/packages/venca-x/social-login) 
+[![License](https://poser.pugx.org/venca-x/social-login/license.svg)](https://packagist.org/packages/venca-x/social-login)
+
+
+
 Nette addon for logint with social networks
 
 Installation
