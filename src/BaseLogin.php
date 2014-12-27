@@ -8,6 +8,12 @@ use Nette;
 class BaseLogin extends Nette\Object
 {
 
+    /** @var Nette\Http\Response */
+    protected $httpResponse;
+
+    /** @var Nette\Http\Request */
+    protected $httpRequest;
+
     const SOCIAL_COOKIE_NAME = "cinch-social-login";
 
     /**
@@ -16,7 +22,7 @@ class BaseLogin extends Nette\Object
      */
     protected function setSocialLoginCookie( $socialServiceName )
     {
-        $this->getHttpResponse()->setCookie( self::SOCIAL_COOKIE_NAME, $socialServiceName, 0 );
+        $this->httpResponse->setCookie( self::SOCIAL_COOKIE_NAME, $socialServiceName, 0 );
     }
 
     /**
@@ -25,7 +31,7 @@ class BaseLogin extends Nette\Object
      */
     public function getSocialLoginCookie()
     {
-        return $this->getHttpRequest()->getCookie( self::SOCIAL_COOKIE_NAME );
+        return $this->httpRequest->getCookie( self::SOCIAL_COOKIE_NAME );
     }
 
 }

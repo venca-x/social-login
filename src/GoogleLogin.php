@@ -19,9 +19,16 @@ class GoogleLogin extends BaseLogin
     /** @var array scope */
     private $scope = array();
 
-    public function __construct( $params )
+    /**
+     * Google
+     * @param $params array - data from config.neon
+     * @param Nette\Http\Response $httpResponse
+     */
+    public function __construct( $params, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest )
     {
         $this->params = $params;
+        $this->httpResponse = $httpResponse;
+        $this->httpRequest = $httpRequest;
 
         $config = new \Google_Config();
         $config->setClassConfig('Google_Cache_File', array('directory' => '/temp/cache'));

@@ -26,11 +26,18 @@ class FacebookLogin extends BaseLogin
     /** @var string scope */
     private $scope = "";
 
-    //Facebook
-    public function __construct( $params )
+    /**
+     * Facebook
+     * @param $params array - data from config.neon
+     * @param Nette\Http\Response $httpResponse
+     */
+    public function __construct( $params, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest )
     {
         FacebookSession::setDefaultApplication( $params["appId"], $params["appSecret"] );
         $this->helper = new FacebookRedirectLoginHelper( $params["callbackURL"] );
+
+        $this->httpResponse = $httpResponse;
+        $this->httpRequest = $httpRequest;
     }
 
     /**

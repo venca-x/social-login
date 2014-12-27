@@ -31,11 +31,19 @@ class TwitterLogin extends BaseLogin
     /** @var Nette\Http\Session session */
     private $session;
 
-    //Facebook
-    public function __construct( $params, Nette\Http\Session $session )
+
+    /**
+     * Twitter
+     * @param $params array - data from config.neon
+     * @param Nette\Http\Session $session
+     * @param Nette\Http\Response $httpResponse
+     */
+    public function __construct( $params, Nette\Http\Session $session, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest )
     {
         $this->params = $params;
         $this->session = $session;
+        $this->httpResponse = $httpResponse;
+        $this->httpRequest = $httpRequest;
     }
 
     /**

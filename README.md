@@ -73,6 +73,13 @@ BasePresenter.php
 
     //$facebookLoginUrl = $this->socialLogin->facebook->getLoginUrl();
     //$googleLoginUrl = $this->socialLogin->google->getLoginUrl();
+    //$twitterLoginUrl = $this->socialLogin->twitter->getLoginUrl();
+
+    //dump( $this->socialLogin->getSocialLoginCookie() );
+
+    //$this->template->facebookLastLogin = $this->socialLogin->facebook->isThisServiceLastLogin();
+    //$this->template->googleLastLogin = $this->socialLogin->google->isThisServiceLastLogin();
+    //$this->template->twitterLastLogin = $this->socialLogin->twitter->isThisServiceLastLogin();
 ...
 
                 <a rel="nofollow" href="{$facebookLoginUrl}"><i class="fa fa-facebook-square fa-lg"></i></a>
