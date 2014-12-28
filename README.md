@@ -51,6 +51,9 @@ config.neon
         consumerSecret: '987654321'
         callbackURL: 'http://www.muj-web.cz/homepage/twitter-login'
 
+	nette:
+		session:
+			autoStart: true  # default is smart	
 
     services:
         ...
