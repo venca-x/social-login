@@ -69,7 +69,7 @@ BasePresenter.php
     /** @var Vencax\SocialLogin */
     private $socialLogin;
 
-    public function injectSocialLogin( Vencax\SocialLogin $socialLogin)
+    public function injectSocialLogin( Vencax\SocialLogin $socialLogin )
     {
         $this->socialLogin = $socialLogin;
     }
