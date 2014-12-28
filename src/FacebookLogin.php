@@ -62,7 +62,7 @@ class FacebookLogin extends BaseLogin
 
     /**
      * Return info about login user
-     * @return mixed
+     * @return array
      * @throws Exception
      */
     public function getMe()
