@@ -75,6 +75,8 @@ class FacebookLogin extends BaseLogin
                 ->execute()
                 ->getGraphObject( Facebook\GraphUser::className() );
 
+            $me = $me->asArray();//convert to array
+
             $this->setSocialLoginCookie( self::SOCIAL_NAME );
 
             return $me;
