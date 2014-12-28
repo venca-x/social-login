@@ -38,18 +38,19 @@ Configuration
 
 config.neon
 
-    facebook:
-        appId: '123456789'
-        appSecret: '987654321'
-        callbackURL: 'http://www.muj-web.cz/homepage/facebook-login'
-    google:
-        clientId: '123456789'
-        clientSecret: '987654321'
-        callbackURL: 'http://www.muj-web.cz/homepage/google-login'
-    twitter:
-        consumerKey: '123456789'
-        consumerSecret: '987654321'
-        callbackURL: 'http://www.muj-web.cz/homepage/twitter-login'
+	parameters:
+		facebook:
+			appId: '123456789'
+			appSecret: '987654321'
+			callbackURL: 'http://www.muj-web.cz/homepage/facebook-login'
+		google:
+			clientId: '123456789'
+			clientSecret: '987654321'
+			callbackURL: 'http://www.muj-web.cz/homepage/google-login'
+		twitter:
+			consumerKey: '123456789'
+			consumerSecret: '987654321'
+			callbackURL: 'http://www.muj-web.cz/homepage/twitter-login'
 
 	nette:
 		session:
