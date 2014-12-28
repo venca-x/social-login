@@ -73,7 +73,7 @@ class FacebookLogin extends BaseLogin
 
             $me = ( new Facebook\FacebookRequest( $session, 'GET', '/me' ) )
                 ->execute()
-                ->getGraphObject( Facebook\GraphUser::className() );
+                ->getGraphObject( Facebook\GraphUser::className() )->asArray();
 
             $me = $me->asArray();//convert to array
 
