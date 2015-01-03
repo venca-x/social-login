@@ -27,17 +27,20 @@ class FacebookLogin extends BaseLogin
     private $scope = "";
 
     /**
-     * Facebook
      * @param $params array - data from config.neon
+     * @param $cookieName String cookie name
      * @param Nette\Http\Response $httpResponse
+     * @param Nette\Http\Request $httpRequest
      */
-    public function __construct( $params, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest )
+    public function __construct( $params, $cookieName, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest )
     {
-        FacebookSession::setDefaultApplication( $params["appId"], $params["appSecret"] );
-        $this->helper = new FacebookRedirectLoginHelper( $params["callbackURL"] );
-
+        $this->params = $params;
+        $this->cookieName = $cookieName;
         $this->httpResponse = $httpResponse;
         $this->httpRequest = $httpRequest;
+
+        FacebookSession::setDefaultApplication( $this->params["appId"], $this->params["appSecret"] );
+        $this->helper = new FacebookRedirectLoginHelper( $this->params["callbackURL"] );
     }
 
     /**

@@ -16,9 +16,6 @@ class TwitterLogin extends BaseLogin
 
     const SOCIAL_NAME = "twitter";
 
-    /** @var config params */
-    private $params;
-
     /** @var \TwitterOAuth */
     private $twitterOAuth;
 
@@ -31,16 +28,18 @@ class TwitterLogin extends BaseLogin
     /** @var Nette\Http\Session session */
     private $session;
 
-
     /**
      * Twitter
      * @param $params array - data from config.neon
+     * @param $cookieName String cookie name
      * @param Nette\Http\Session $session
      * @param Nette\Http\Response $httpResponse
+     * @param Nette\Http\Request $httpRequest
      */
-    public function __construct( $params, Nette\Http\Session $session, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest )
+    public function __construct( $params, $cookieName, Nette\Http\Session $session, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest )
     {
         $this->params = $params;
+        $this->cookieName = $cookieName;
         $this->session = $session;
         $this->httpResponse = $httpResponse;
         $this->httpRequest = $httpRequest;

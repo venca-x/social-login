@@ -7,6 +7,11 @@ use Nette;
 
 class BaseLogin extends Nette\Object
 {
+    /** @var array params */
+    protected $params;
+
+    /** @var String cookie name - save last used service for login */
+    protected $cookieName;
 
     /** @var Nette\Http\Response */
     protected $httpResponse;
@@ -14,15 +19,13 @@ class BaseLogin extends Nette\Object
     /** @var Nette\Http\Request */
     protected $httpRequest;
 
-    const SOCIAL_COOKIE_NAME = "cinch-social-login";
-
     /**
      * Set cookie with social login service
-     * @param $socialServiceName Social service name
+     * @param $socialServiceName Social service name for
      */
     protected function setSocialLoginCookie( $socialServiceName )
     {
-        $this->httpResponse->setCookie( self::SOCIAL_COOKIE_NAME, $socialServiceName, 0 );
+        $this->httpResponse->setCookie( $this->cookieName, $socialServiceName, 0 );
     }
 
     /**
@@ -31,7 +34,7 @@ class BaseLogin extends Nette\Object
      */
     public function getSocialLoginCookie()
     {
-        return $this->httpRequest->getCookie( self::SOCIAL_COOKIE_NAME );
+        return $this->httpRequest->getCookie( $this->cookieName );
     }
 
 }

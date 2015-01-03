@@ -58,7 +58,9 @@ config.neon
 
     services:
         ...
-        - Vencax\SocialLogin({ facebook: %facebook%, google: %google%, twitter: %twitter% })
+        - Vencax\SocialLogin({ facebook: %facebook%, google: %google%, twitter: %twitter% }, 'domain-social-login' )
+
+Where 'domain-social-login' replace to your unique identifier (it's cookie name for last used services for login)
 
 
 BasePresenter.php

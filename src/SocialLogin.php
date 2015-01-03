@@ -7,10 +7,6 @@ use Vencax;
 
 class SocialLogin extends BaseLogin
 {
-
-    /** @var Params from config */
-    private $params;
-
     /** @var Vencax\FacebookLogin */
     public $facebook;
 
@@ -22,26 +18,31 @@ class SocialLogin extends BaseLogin
 
     /**
      * @param $params params from cnofig.neon
+     * @param $params $cookieName cookie name - save last used service for login
      * @param Nette\Http\Response $httpResponse
      * @param Nette\Http\Request $httpRequest
      * @param Nette\Http\Session $session
      */
-    public function __construct( $params, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest, Nette\Http\Session $session )
+    public function __construct( $params, $cookieName, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest, Nette\Http\Session $session )
     {
         $this->params = $params;
+        $this->cookieName = $cookieName;
         $this->httpResponse = $httpResponse;
         $this->httpRequest = $httpRequest;
 
-        if ( count( $this->params["facebook"] ) > 0 ) {
-            $this->facebook = new FacebookLogin( $this->params["facebook"], $this->httpResponse, $this->httpRequest );
+        if ( count( $this->params["facebook"] ) > 0 )
+        {
+            $this->facebook = new FacebookLogin( $this->params["facebook"], $this->cookieName, $this->httpResponse, $this->httpRequest );
         }
 
-        if ( count( $this->params["google"] ) > 0 ) {
-            $this->google = new GoogleLogin( $this->params["google"], $this->httpResponse, $this->httpRequest );
+        if ( count( $this->params["google"] ) > 0 )
+        {
+            $this->google = new GoogleLogin( $this->params["google"], $cookieName, $this->httpResponse, $this->httpRequest );
         }
 
-        if ( count( $this->params["twitter"] ) > 0 ) {
-            $this->twitter = new TwitterLogin( $this->params["twitter"], $session, $this->httpResponse, $this->httpRequest );
+        if ( count( $this->params["twitter"] ) > 0 )
+        {
+            $this->twitter = new TwitterLogin( $this->params["twitter"], $cookieName, $session, $this->httpResponse, $this->httpRequest );
         }
     }
 

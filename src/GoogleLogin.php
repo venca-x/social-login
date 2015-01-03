@@ -10,9 +10,6 @@ class GoogleLogin extends BaseLogin
 
     const SOCIAL_NAME = "google";
 
-    /** @var array params */
-    private $params;
-
     /** @var Google_Client */
     private $client;
 
@@ -22,11 +19,14 @@ class GoogleLogin extends BaseLogin
     /**
      * Google
      * @param $params array - data from config.neon
+     * @param $cookieName String cookie name
      * @param Nette\Http\Response $httpResponse
+     * @param Nette\Http\Request $httpRequest
      */
-    public function __construct( $params, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest )
+    public function __construct( $params, $cookieName, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest )
     {
         $this->params = $params;
+        $this->cookieName = $cookieName;
         $this->httpResponse = $httpResponse;
         $this->httpRequest = $httpRequest;
 
