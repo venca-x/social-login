@@ -145,12 +145,14 @@ Registration
 
 Facebook
 -------------
-[Facebook Developers](https://developers.facebook.com/)
+[Facebook Developers](https://developers.facebook.com/) - create new website app
 
 Google
 -------------
-[API Console - Google Code](https://console.developers.google.com)
+[API Console - Google Code](https://console.developers.google.com) - create new project
+add Google+ API: APIs & auth -> APIs -> Google+ API set ON
+credentials: APIs & auth -> Credentials -> Crate new Client ID -> Web application
 
 Twitter
 -------------
-1) [Register a new app at dev.twitter.com/apps/](https://apps.twitter.com/app/new)
+[Register a new app at dev.twitter.com/apps/](https://apps.twitter.com/app/new)
