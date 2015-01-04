@@ -89,12 +89,15 @@ BasePresenter.php
     //$this->template->facebookLastLogin = $this->socialLogin->facebook->isThisServiceLastLogin();
     //$this->template->googleLastLogin = $this->socialLogin->google->isThisServiceLastLogin();
     //$this->template->twitterLastLogin = $this->socialLogin->twitter->isThisServiceLastLogin();
-...
+    ...
+```
 
-                <a rel="nofollow" href="{$facebookLoginUrl}" {if $facebookLastLogin}class="last-login"{/if}><i class="fa fa-facebook-square fa-lg"></i></a>
-                <a rel="nofollow" href="{$googleLoginUrl}" {if $googleLastLogin}class="last-login"{/if}><i class="fa fa-google-plus-square fa-lg"></i></a><br/>
-                <a rel="nofollow" href="{plink User:twitterLogin}" {if $twitterLastLogin}class="last-login"{/if}><i class="fa fa-twitter-square fa-lg"></i></a><br/>
-                <a rel="nofollow" href="{plink User:registration}"><i class="fa fa-plus-square fa-lg"></i> Zaregistrovat</a>
+
+    <a rel="nofollow" href="{$facebookLoginUrl}" {if $facebookLastLogin}class="last-login"{/if}><i class="fa fa-facebook-square fa-lg"></i></a>
+    <a rel="nofollow" href="{$googleLoginUrl}" {if $googleLastLogin}class="last-login"{/if}><i class="fa fa-google-plus-square fa-lg"></i></a><br/>
+    <a rel="nofollow" href="{plink User:twitterLogin}" {if $twitterLastLogin}class="last-login"{/if}><i class="fa fa-twitter-square fa-lg"></i></a><br/>
+    <a rel="nofollow" href="{plink User:registration}"><i class="fa fa-plus-square fa-lg"></i> Zaregistrovat</a>
+
 
 ```php
     public function actionTwitterLogin()
@@ -134,7 +137,7 @@ HomepagePresenter.php
             $this->redirect("Homepage:default");
         }
     }
-...
+    ...
 ```
 
 Registration
