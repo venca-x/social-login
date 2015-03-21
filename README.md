@@ -15,8 +15,15 @@ Nette addon for logint with social networks
 Installation
 ------------
 
- 1. Add the bundle to your dependencies:
+Add the bundle to your dependencies:
 
+		composer require facebook/php-sdk-v4:4.0.*
+		composer require google/apiclient:~1.0
+		composer require kertz/twitteroauth:dev-master
+		composer require venca-x/social-login:dev-master
+ 
+        //////////////////////////////////////////////////////////// 
+		Final composer.json:
         // composer.json
         {
            // ...
@@ -25,13 +32,9 @@ Installation
 			   "facebook/php-sdk-v4" : "4.0.*",
 			   "google/apiclient": "~1.0",
 			   "kertz/twitteroauth": "dev-master",
-			   "venca-x/social-login": "@dev"
+			   "venca-x/social-login": "dev-master"
            }
         }
-
- 2. Use Composer to download and install the bundle:
-
-        composer update
 
 Configuration
 -------------
