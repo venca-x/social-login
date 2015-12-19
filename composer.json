@@ -11,7 +11,6 @@
       "homepage": "http://www.venca-x.cz"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": ">= 5.4",
     "nette/application": ">=2.2.0",
