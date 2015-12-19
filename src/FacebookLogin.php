@@ -20,11 +20,17 @@ class FacebookLogin extends BaseLogin
 
     const SOCIAL_NAME = "facebook";
 
+    /** @var Facebook\Facebook */
+    private $fb;
+
     /** @var FacebookRedirectLoginHelper */
     private $helper;
 
     /** @var string scope */
-    private $scope = "";
+    private $scope = array();
+
+    /** @var string callBackUrl */
+    private $callBackUrl = "";
 
     /**
      * @param $params array - data from config.neon
@@ -38,9 +44,14 @@ class FacebookLogin extends BaseLogin
         $this->cookieName = $cookieName;
         $this->httpResponse = $httpResponse;
         $this->httpRequest = $httpRequest;
+        $this->callBackUrl = $this->params["callbackURL"];
 
-        FacebookSession::setDefaultApplication( $this->params["appId"], $this->params["appSecret"] );
-        $this->helper = new FacebookRedirectLoginHelper( $this->params["callbackURL"] );
+        $this->fb = new Facebook\Facebook([
+            'app_id'     => $this->params["appId"],
+            'app_secret' => $this->params["appSecret"],
+            'default_graph_version' => 'v2.5',
+        ]);
+        $this->helper = $this->fb->getRedirectLoginHelper();
     }
 
     /**
@@ -59,7 +70,7 @@ class FacebookLogin extends BaseLogin
      */
     public function getLoginUrl()
     {
-        $loginUrl = $this->helper->getLoginUrl( array( 'scope' => $this->scope ) );
+        $loginUrl = $this->helper->getLoginUrl($this->callBackUrl, $this->scope);
         return $loginUrl;
     }
 
@@ -70,30 +81,18 @@ class FacebookLogin extends BaseLogin
      */
     public function getMe()
     {
-
+        $client = $this->fb->getOAuth2Client();
         try {
-            $session = $this->helper->getSessionFromRedirect();
+            $accessToken = $client->getLongLivedAccessToken($this->helper->getAccessToken()->getValue());
+            $response = $this->fb->get('/me?fields=id,name,email', $accessToken);
 
-            $me = ( new Facebook\FacebookRequest( $session, 'GET', '/me' ) )
-                ->execute()
-                ->getGraphObject( Facebook\GraphUser::className() );
-
-            $me = $me->asArray();//convert to array
-
-            $this->setSocialLoginCookie( self::SOCIAL_NAME );
-
-            return $me;
-        }
-        catch ( FacebookRequestException $e )
-        {
+            return $response->getDecodedBody();
+            
+        } catch(Facebook\Exceptions\FacebookResponseException $e) {
+            // When Graph returns an error
             throw new Exception( $e->getMessage() );
-        }
-        catch ( Nette\Security\AuthenticationException $e )
-        {
-            throw new Exception( $e->getMessage() );
-        }
-        catch ( Exception $e )
-        {
+        } catch(Facebook\Exceptions\FacebookSDKException $e) {
+            // When validation fails or other local issues
             throw new Exception( $e->getMessage() );
         }
     }

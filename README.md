@@ -17,7 +17,7 @@ Installation
 
 Add the bundle to your dependencies:
 
-		composer require facebook/php-sdk-v4:4.0.*
+		composer require facebook/php-sdk-v4:5.0.*
 		composer require google/apiclient:~1.0
 		composer require kertz/twitteroauth:dev-master
 		composer require venca-x/social-login:dev-master
@@ -29,7 +29,7 @@ Add the bundle to your dependencies:
            // ...
            "require": {
                // ...
-			   "facebook/php-sdk-v4" : "4.0.*",
+			   "facebook/php-sdk-v4" : "5.0.*",
 			   "google/apiclient": "~1.0",
 			   "kertz/twitteroauth": "dev-master",
 			   "venca-x/social-login": "dev-master"
@@ -78,7 +78,7 @@ BasePresenter.php
     {
         $this->socialLogin = $socialLogin;
 		//set scope
-        $this->socialLogin->facebook->setScope( 'email' );
+        $this->socialLogin->facebook->setScope( ['email'] );
         $this->socialLogin->google->setScope( array( "https://www.googleapis.com/auth/plus.me", "https://www.googleapis.com/auth/userinfo.email" ) );		
     }
 
