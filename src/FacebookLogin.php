@@ -82,6 +82,11 @@ class FacebookLogin extends BaseLogin
     public function getMe()
     {
         $client = $this->fb->getOAuth2Client();
+
+        if($this->helper->getAccessToken() == null) {
+            throw new Exception( "User not allowed permissions");
+        }
+
         try {
             $accessToken = $client->getLongLivedAccessToken($this->helper->getAccessToken()->getValue());
             $response = $this->fb->get('/me?fields=id,name,email', $accessToken);
