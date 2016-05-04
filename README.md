@@ -22,7 +22,7 @@ Add the bundle to your dependencies:
 		composer require facebook/php-sdk-v4:5.0.*
 		composer require google/apiclient:~1.0
 		composer require kertz/twitteroauth:dev-master
-		composer require venca-x/social-login:dev-master
+		composer require venca-x/social-login:~1.0.0
  
         //////////////////////////////////////////////////////////// 
 		Final composer.json:
@@ -34,7 +34,7 @@ Add the bundle to your dependencies:
 			   "facebook/php-sdk-v4" : "5.0.*",
 			   "google/apiclient": "~1.0",
 			   "kertz/twitteroauth": "dev-master",
-			   "venca-x/social-login": "dev-master"
+			   "venca-x/social-login": "~1.0.0"
            }
         }
 
