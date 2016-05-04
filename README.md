@@ -1,7 +1,6 @@
 social-login
 ===============
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/venca-x/social-login/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/venca-x/social-login/?branch=master)
 [![Build Status](https://travis-ci.org/venca-x/social-login.svg)](https://travis-ci.org/venca-x/social-login) 
 [![Latest Stable Version](https://poser.pugx.org/venca-x/social-login/v/stable.svg)](https://packagist.org/packages/venca-x/social-login) 
 [![Total Downloads](https://poser.pugx.org/venca-x/social-login/downloads.svg)](https://packagist.org/packages/venca-x/social-login) 
@@ -11,6 +10,9 @@ social-login
 
 
 Nette addon for logint with social networks
+
+Version 1.0.0 use Facebook App API version v 2.6
+[All permissions for Facebook fields](https://developers.facebook.com/docs/graph-api/reference/user/)
 
 Installation
 ------------
@@ -115,7 +117,7 @@ HomepagePresenter.php
     {
         try
         {
-            $me = $this->socialLogin->facebook->getMe();
+            $me = $this->socialLogin->facebook->getMe( array( FacebookLogin::ID, FacebookLogin::EMAIL, FacebookLogin::NAME, FacebookLogin::FIRST_NAME, FacebookLogin::LAST_NAME ) );
             dump( $me );
             exit();
         }
@@ -148,7 +150,7 @@ Registration
 
 Facebook
 -------------
-[Facebook Developers](https://developers.facebook.com/) - create new website app
+[Facebook Developers](https://developers.facebook.com/) - create new website app. Full: Settings -> Web page -> Site URL : http://www.mypage.com
 
 Google
 -------------

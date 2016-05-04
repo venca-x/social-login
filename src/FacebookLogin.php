@@ -18,6 +18,61 @@ use Exception;
 class FacebookLogin extends BaseLogin
 {
 
+    //me permissions
+    const ID = "id";
+    const ABOUT = "about";
+    const ADMIN_NOTES = "admin_notes";
+    const AGE_RANGE = "age_range";
+    const BIO = "bio";
+    const BIRTHDAY = "birthday";
+    const CONTEXT = "context";
+    const COVER = "cover";
+    const CURRENCY = "currency";
+    const DEVICES = "devices";
+    const EDUCATION = "education";
+    const EMAIL = "email";
+    const FAVORITE_ATHLETES = "favorite_athletes";
+    const FAVORITE_TEAMS = "favorite_teams";
+    const FIRST_NAME = "first_name";
+    const GENDER = "gender";
+    const HOMETOWN = "hometown";
+    const INSPIRATIONAL_PEOPLE = "inspirational_people";
+    const INSTALL_TYPE = "install_type";
+    const INSTALLED = "installed";
+    const INTERESTED_IN = "interested_in";
+    const IS_SHARED_LOGIN = "is_shared_login";
+    const IS_VERIFIED = "is_verified";
+    const LABELS = "labels";
+    const LANGUAGES = "languages";
+    const LAST_NAME = "last_name";
+    const LINK = "link";
+    const LOCALE = "locale";
+    const LOCATION = "location";
+    const MEETING_FOR = "meeting_for";
+    const MIDDLE_NAME = "middle_name";
+    const NAME = "name";
+    const NAME_FORMAT = "name_format";
+    const PAYMENT_PRICEPOINTS = "payment_pricepoints";
+    const POLITICAL = "political";
+    const PUBLIC_KEY = "public_key";
+    const QUOTES = "quotes";
+    const RELATIONSHIP_STATUS = "relationship_status";
+    const RELIGION = "religion";
+    const SECURITY_SETTINGS = "security_settings";
+    const SHARED_LOGIN_UPGRADE_REQUIRED_BY = "shared_login_upgrade_required_by";
+    const SIGNIFICANT_OTHER = "significant_other";
+    const SPORTS = "sports";
+    const TEST_GROUP = "test_group";
+    const THIRD_PARTY_ID = "third_party_id";
+    const TIMEZONE = "timezone";
+    const TOKEN_FOR_BUSINESS = "token_for_business";
+    const UPDATED_TIME = "updated_time";
+    const VERIFIED = "verified";
+    const VIDEO_UPLOAD_LIMITS = "video_upload_limits";
+    const VIEWER_CAN_SEND_GIFT = "viewer_can_send_gift";
+    const WEBSITE = "website";
+    const WORK = "work";
+
     const SOCIAL_NAME = "facebook";
 
     /** @var Facebook\Facebook */
@@ -49,7 +104,7 @@ class FacebookLogin extends BaseLogin
         $this->fb = new Facebook\Facebook([
             'app_id'     => $this->params["appId"],
             'app_secret' => $this->params["appSecret"],
-            'default_graph_version' => 'v2.5',
+            'default_graph_version' => 'v2.6',
         ]);
         $this->helper = $this->fb->getRedirectLoginHelper();
     }
@@ -75,11 +130,12 @@ class FacebookLogin extends BaseLogin
     }
 
     /**
-     * Return info about login user
+     * Return info about facebook user
+     * @param $fields
      * @return array
      * @throws Exception
      */
-    public function getMe()
+    public function getMe( $fields )
     {
         $client = $this->fb->getOAuth2Client();
         $accessTokenObject = $this->helper->getAccessToken();
@@ -87,9 +143,14 @@ class FacebookLogin extends BaseLogin
             throw new Exception( "User not allowed permissions");
         }
 
+        if($fields == "" || !is_array($fields) || count($fields) == 0 ) {
+            //array is empty
+            $fields = array( ID );//set ID field
+        }
+
         try {
             $accessToken = $client->getLongLivedAccessToken($accessTokenObject->getValue());
-            $response = $this->fb->get('/me?fields=id,name,email', $accessToken);
+            $response = $this->fb->get("/me?fields=" . implode(",", $fields), $accessToken);
 
             return $response->getDecodedBody();
             
