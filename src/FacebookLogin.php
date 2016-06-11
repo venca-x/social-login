@@ -152,6 +152,8 @@ class FacebookLogin extends BaseLogin
             $accessToken = $client->getLongLivedAccessToken($accessTokenObject->getValue());
             $response = $this->fb->get("/me?fields=" . implode(",", $fields), $accessToken);
 
+            $this->setSocialLoginCookie( self::SOCIAL_NAME );
+
             return $response->getDecodedBody();
             
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
