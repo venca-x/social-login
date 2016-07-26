@@ -30,10 +30,7 @@ class GoogleLogin extends BaseLogin
         $this->httpResponse = $httpResponse;
         $this->httpRequest = $httpRequest;
 
-        $config = new \Google_Config();
-        $config->setClassConfig('Google_Cache_File', array('directory' => '/temp/cache'));
-
-        $this->client = new \Google_Client( $config );
+        $this->client = new \Google_Client();
 
         $this->client->setClientId( $this->params["clientId"] );
         $this->client->setClientSecret( $this->params["clientSecret"] );
