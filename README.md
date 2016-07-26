@@ -8,7 +8,6 @@ social-login
 [![License](https://poser.pugx.org/venca-x/social-login/license.svg)](https://packagist.org/packages/venca-x/social-login)
 
 
-
 Nette addon for logint with social networks
 
 Version 1.0.0 use Facebook App API version v 2.6
@@ -18,31 +17,32 @@ Installation
 ------------
 
 Add the bundle to your dependencies:
-
-		composer require facebook/php-sdk-v4:5.0.*
-		composer require google/apiclient:~2.0
-		composer require kertz/twitteroauth:dev-master
-		composer require venca-x/social-login:~1.0.0
+```
+composer require facebook/php-sdk-v4:5.0.*
+composer require google/apiclient:~2.0
+composer require kertz/twitteroauth:dev-master
+composer require venca-x/social-login:~1.0.0
+```
  
-        //////////////////////////////////////////////////////////// 
-		Final composer.json:
-        // composer.json
-        {
-           // ...
-           "require": {
-               // ...
-			   "facebook/php-sdk-v4" : "5.0.*",
-			   "google/apiclient": "~2.0",
-			   "kertz/twitteroauth": "dev-master",
-			   "venca-x/social-login": "~1.0.0"
-           }
-        }
-
+``` 
+Final composer.json:
+// composer.json
+{
+   // ...
+   "require": {
+       // ...
+       "facebook/php-sdk-v4" : "5.0.*",
+       "google/apiclient": "~2.0",
+       "kertz/twitteroauth": "dev-master",
+       "venca-x/social-login": "~1.0.0"
+   }
+}
+```
 Configuration
 -------------
 
 config.neon
-
+```
 	parameters:
 		facebook:
 			appId: '123456789'
@@ -64,7 +64,7 @@ config.neon
     services:
         ...
         - Vencax\SocialLogin({ facebook: %facebook%, google: %google%, twitter: %twitter% }, 'domain-social-login' )
-
+```
 Where 'domain-social-login' replace to your unique identifier (it's cookie name for last used services for login)
 
 
@@ -97,12 +97,12 @@ BasePresenter.php
     ...
 ```
 
-
+```html
     <a rel="nofollow" href="{$facebookLoginUrl}" {if $facebookLastLogin}class="last-login"{/if}><i class="fa fa-facebook-square fa-lg"></i></a>
     <a rel="nofollow" href="{$googleLoginUrl}" {if $googleLastLogin}class="last-login"{/if}><i class="fa fa-google-plus-square fa-lg"></i></a><br/>
     <a rel="nofollow" href="{plink User:twitterLogin}" {if $twitterLastLogin}class="last-login"{/if}><i class="fa fa-twitter-square fa-lg"></i></a><br/>
     <a rel="nofollow" href="{plink User:registration}"><i class="fa fa-plus-square fa-lg"></i> Zaregistrovat</a>
-
+```
 
 ```php
     public function actionTwitterLogin()
