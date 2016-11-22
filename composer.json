@@ -16,7 +16,7 @@
     "nette/application": ">=2.2.0",
     "latte/latte": ">=2.2.0",
     "nette/tester": ">=1.0",
-    "facebook/php-sdk-v4" : ">=4.0",
+    "facebook/graph-sdk": "^5.4",
     "google/apiclient": ">=2.0",
     "kertz/twitteroauth": "dev-master"
   },
