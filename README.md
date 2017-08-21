@@ -18,9 +18,6 @@ Installation
 
 Add the bundle to your dependencies:
 ```
-composer require facebook/graph-sdk:~5.4
-composer require google/apiclient:~2.0
-composer require kertz/twitteroauth:dev-master
 composer require venca-x/social-login:~1.0.0
 ```
  
