@@ -3,7 +3,6 @@
   "description": "Nette addon. Login with social networks ( Faceboook, Google, Twitter )",
   "keywords": ["social login", "php", "nette", "Facebook login", "Google login", "Twitter login"],
   "license": "MIT",
-  "version": "1.0.0",
   "authors": [
     {
       "name": "vEnCa-X",
