@@ -90,10 +90,10 @@ class FacebookLogin extends BaseLogin
     /**
      * @param $params array - data from config.neon
      * @param $cookieName String cookie name
-     * @param Nette\Http\Response $httpResponse
-     * @param Nette\Http\Request $httpRequest
+     * @param Nette\Http\IResponse $httpResponse
+     * @param Nette\Http\IRequest $httpRequest
      */
-    public function __construct( $params, $cookieName, Nette\Http\Response $httpResponse, Nette\Http\Request $httpRequest )
+    public function __construct( $params, $cookieName, Nette\Http\IResponse $httpResponse, Nette\Http\IRequest $httpRequest )
     {
         $this->params = $params;
         $this->cookieName = $cookieName;

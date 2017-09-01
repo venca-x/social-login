@@ -13,10 +13,10 @@ class BaseLogin extends Nette\Object
     /** @var String cookie name - save last used service for login */
     protected $cookieName;
 
-    /** @var Nette\Http\Response */
+    /** @var Nette\Http\IResponse */
     protected $httpResponse;
 
-    /** @var Nette\Http\Request */
+    /** @var Nette\Http\IRequest */
     protected $httpRequest;
 
     /**
