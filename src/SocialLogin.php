@@ -1,19 +1,19 @@
 <?php
 
-namespace Vencax;
+namespace VencaX;
 
 use Nette;
-use Vencax;
+use VencaX;
 
 class SocialLogin extends BaseLogin
 {
-    /** @var Vencax\FacebookLogin */
+    /** @var VencaX\FacebookLogin */
     public $facebook;
 
-    /** @var Vencax\GoogleLogin */
+    /** @var VencaX\GoogleLogin */
     public $google;
 
-    /** @var Vencax\Twitter */
+    /** @var VencaX\Twitter */
     public $twitter;
 
     /**

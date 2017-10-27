@@ -1,6 +1,6 @@
 <?php
 
-namespace Vencax;
+namespace VencaX;
 
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequestException;
@@ -13,7 +13,7 @@ use Exception;
 /**
  * Login with Facebook API
  * Class FacebookLogin
- * @package Vencax
+ * @package VencaX
  */
 class FacebookLogin extends BaseLogin
 {

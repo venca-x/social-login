@@ -60,7 +60,7 @@ config.neon
 
     services:
         ...
-        - Vencax\SocialLogin({ facebook: %facebook%, google: %google%, twitter: %twitter% }, 'domain-social-login' )
+        - VencaX\SocialLogin({ facebook: %facebook%, google: %google%, twitter: %twitter% }, 'domain-social-login' )
 ```
 Where 'domain-social-login' replace to your unique identifier (it's cookie name for last used services for login)
 
@@ -68,12 +68,12 @@ Where 'domain-social-login' replace to your unique identifier (it's cookie name 
 BasePresenter.php
 
 ```php
-    use Vencax;
+    use VencaX;
 
-    /** @var Vencax\SocialLogin */
+    /** @var VencaX\SocialLogin */
     private $socialLogin;
 
-    public function injectSocialLogin( Vencax\SocialLogin $socialLogin )
+    public function injectSocialLogin( VencaX\SocialLogin $socialLogin )
     {
         $this->socialLogin = $socialLogin;
 		//set scope

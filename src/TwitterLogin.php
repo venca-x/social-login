@@ -1,6 +1,6 @@
 <?php
 
-namespace Vencax;
+namespace VencaX;
 
 use Nette;
 use Facebook;
@@ -9,7 +9,7 @@ use Exception;
 /**
  * Login with Twitter API
  * Class TwitterLogin
- * @package Vencax
+ * @package VencaX
  */
 class TwitterLogin extends BaseLogin
 {

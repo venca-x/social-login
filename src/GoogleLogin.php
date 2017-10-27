@@ -1,6 +1,6 @@
 <?php
 
-namespace Vencax;
+namespace VencaX;
 
 use Nette;
 use Exception;
