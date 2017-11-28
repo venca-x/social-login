@@ -1,0 +1,34 @@
+{
+  "name": "social-login",
+  "version": "1.0.0",
+  "description": "Nette addon. Login with social networks ( Faceboook, Google, Twitter )",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venca-x/social-login.git"
+  },
+  "keywords": [
+    "Nette",
+    "Facebook login",
+    "Google login",
+    "Twitter login"
+  ],
+  "author": "vEnCa-X",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/venca-x/social-login/issues"
+  },
+  "homepage": "https://github.com/venca-x/social-login#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-shell": "^2.1.0",
+    "load-grunt-tasks": "^3.5.2"
+  }
+}

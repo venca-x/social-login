@@ -1,7 +1,14 @@
 {
   "name": "venca-x/social-login",
   "description": "Nette addon. Login with social networks ( Faceboook, Google, Twitter )",
-  "keywords": ["social login", "php", "nette", "Facebook login", "Google login", "Twitter login"],
+  "keywords": [
+    "social login",
+    "php",
+    "nette",
+    "Facebook login",
+    "Google login",
+    "Twitter login"
+  ],
   "license": "MIT",
   "authors": [
     {
@@ -11,15 +18,22 @@
     }
   ],
   "require": {
-    "php": ">= 5.6",
-    "nette/application": ">=2.2.0",
-    "latte/latte": ">=2.2.0",
-    "nette/tester": "^2.0",
+    "php": "^7.0",
+    "nette/application": "^3.0",
     "facebook/graph-sdk": "^5.6",
     "google/apiclient": "^2.2",
     "kertz/twitteroauth": "dev-master"
   },
+  "require-dev": {
+    "nette/robot-loader": "^3.0",
+    "nette/bootstrap": "^3.0",
+    "tracy/tracy": "^2.4",
+    "nette/tester": "^2.0"
+  },
   "autoload": {
-    "classmap": ["src/"]
-  }
+    "classmap": [
+      "src/"
+    ]
+  },
+  "minimum-stability": "dev"
 }
