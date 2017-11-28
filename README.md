@@ -8,9 +8,13 @@ social-login
 [![License](https://poser.pugx.org/venca-x/social-login/license.svg)](https://packagist.org/packages/venca-x/social-login)
 
 
-Nette addon for logint with social networks
+Nette addon for login with social networks
 
-Version 1.0.0 use Facebook App API version v 2.6
+| Version     | Facebook App API | PHP     | Recommended Nette |
+| ---         | ---              | ---     | ---               |
+| dev-master  | 2.11 or own      | \>= 7.1 | Nette 3.0         |
+| 1.0.x       | 2.6              | \>= 5.5 | Nette 2.4, 2.3    |
+
 [All permissions for Facebook fields](https://developers.facebook.com/docs/graph-api/reference/user/)
 
 Installation
