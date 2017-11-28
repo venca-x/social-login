@@ -20,25 +20,16 @@ Nette addon for login with social networks
 Installation
 ------------
 
-Add the bundle to your dependencies:
+Install **dev-master** version for **Nette 3.0** (**!!!needs at least PHP 7.1!!!**):
 ```
-composer require venca-x/social-login:~1.0.0
+composer require venca-x/social-login:~dev-master
 ```
- 
-``` 
-Final composer.json:
-// composer.json
-{
-   // ...
-   "require": {
-       // ...
-       "facebook/graph-sdk" : "^5.4",
-       "google/apiclient": "~2.0",
-       "kertz/twitteroauth": "dev-master",
-       "venca-x/social-login": "~1.0.0"
-   }
-}
+
+Install **1.0x** version for **Nette 2.4** or **Nette 2.3**:
 ```
+composer require venca-x/social-login:^1.0.0
+```
+
 Configuration
 -------------
 
@@ -49,6 +40,7 @@ config.neon
 			appId: '123456789'
 			appSecret: '987654321'
 			callbackURL: 'http://www.muj-web.cz/homepage/facebook-login'
+			defaultFbGraphVersion: 'v2.11'
 		google:
 			clientId: '123456789'
 			clientSecret: '987654321'

@@ -75,6 +75,8 @@ class FacebookLogin extends BaseLogin
 
     const SOCIAL_NAME = "facebook";
 
+    const DEFAULT_FB_GRAPH_VERSION = "v2.11";
+
     /** @var Facebook\Facebook */
     private $fb;
 
@@ -101,10 +103,16 @@ class FacebookLogin extends BaseLogin
         $this->httpRequest = $httpRequest;
         $this->callBackUrl = $this->params["callbackURL"];
 
+        $default_graph_version = self::DEFAULT_FB_GRAPH_VERSION;
+        if($this->params["defaultFbGraphVersion"] != '') {
+        	//set users defaultFbGraphVersion
+			$default_graph_version = $this->params["defaultFbGraphVersion"];
+		}
+
         $this->fb = new Facebook\Facebook([
             'app_id'     => $this->params["appId"],
             'app_secret' => $this->params["appSecret"],
-            'default_graph_version' => 'v2.6',
+            'default_graph_version' => $default_graph_version,
         ]);
         $this->helper = $this->fb->getRedirectLoginHelper();
     }
@@ -137,7 +145,6 @@ class FacebookLogin extends BaseLogin
      */
     public function getMe( $fields )
     {
-        $client = $this->fb->getOAuth2Client();
         $accessTokenObject = $this->helper->getAccessToken();
         if($accessTokenObject == null) {
             throw new Exception( "User not allowed permissions");
@@ -145,10 +152,18 @@ class FacebookLogin extends BaseLogin
 
         if($fields == "" || !is_array($fields) || count($fields) == 0 ) {
             //array is empty
-            $fields = array( ID );//set ID field
+            $fields = array( self::ID );//set ID field
         }
 
         try {
+
+			if(isset($_SESSION['facebook_access_token'])){
+				$this->fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+			}else{
+				$_SESSION['facebook_access_token'] = (string) $accessTokenObject;
+			}
+
+			$client = $this->fb->getOAuth2Client();
             $accessToken = $client->getLongLivedAccessToken($accessTokenObject->getValue());
             $response = $this->fb->get("/me?fields=" . implode(",", $fields), $accessToken);
 
