@@ -1,12 +1,12 @@
 social-login
 ===============
 
-[![Build Status](https://travis-ci.org/venca-x/social-login.svg)](https://travis-ci.org/venca-x/social-login) 
+[![Build Status](https://travis-ci.org/venca-x/social-login.svg)](https://travis-ci.org/venca-x/social-login)
+[![Coverage Status](https://coveralls.io/repos/github/venca-x/social-login/badge.svg?branch=master)](https://coveralls.io/github/venca-x/social-login?branch=master) 
 [![Latest Stable Version](https://poser.pugx.org/venca-x/social-login/v/stable.svg)](https://packagist.org/packages/venca-x/social-login) 
-[![Total Downloads](https://poser.pugx.org/venca-x/social-login/downloads.svg)](https://packagist.org/packages/venca-x/social-login) 
 [![Latest Unstable Version](https://poser.pugx.org/venca-x/social-login/v/unstable.svg)](https://packagist.org/packages/venca-x/social-login) 
+[![Total Downloads](https://poser.pugx.org/venca-x/social-login/downloads.svg)](https://packagist.org/packages/venca-x/social-login) 
 [![License](https://poser.pugx.org/venca-x/social-login/license.svg)](https://packagist.org/packages/venca-x/social-login)
-
 
 Nette addon for login with social networks
 
