@@ -200,7 +200,7 @@ class FacebookLogin extends BaseLogin
 	 */
 	public function getMe($fields)
 	{
-		$accessTokenObject = $this->helper->getAccessToken();
+		$accessTokenObject = $this->helper->getAccessToken($this->callBackUrl);
 		if ($accessTokenObject == null) {
 			throw new Exception('User not allowed permissions');
 		}
