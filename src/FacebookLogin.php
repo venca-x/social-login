@@ -156,7 +156,7 @@ class FacebookLogin extends BaseLogin
 		$this->callBackUrl = $this->params['callbackURL'];
 
 		$default_graph_version = self::DEFAULT_FB_GRAPH_VERSION;
-		if ($this->params['defaultFbGraphVersion'] != '') {
+		if (array_key_exists ('defaultFbGraphVersion', $this->params) && $this->params['defaultFbGraphVersion'] != '') {
 			//set users defaultFbGraphVersion
 			$default_graph_version = $this->params['defaultFbGraphVersion'];
 		}
