@@ -27,7 +27,7 @@ class BaseLogin extends Nette\Object
 	 */
 	protected function setSocialLoginCookie($socialServiceName)
 	{
-		$this->httpResponse->setCookie($this->cookieName, $socialServiceName, 0);
+		$this->httpResponse->setCookie($this->cookieName, (string)$socialServiceName, 0);
 	}
 
 
