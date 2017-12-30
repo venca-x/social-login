@@ -179,6 +179,7 @@ class FacebookLogin extends BaseLogin
 		$this->scope = $scope;
 	}
 
+
 	/**
 	 * Set state
 	 * @param string $state
@@ -187,6 +188,7 @@ class FacebookLogin extends BaseLogin
 	{
 		$this->helper->getPersistentDataHandler()->set('state', $state);
 	}
+
 
 	/**
 	 * Get URL for login
