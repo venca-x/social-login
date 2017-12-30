@@ -104,6 +104,7 @@ BasePresenter.php
     }
 ```
 
+### Simple login ###
 HomepagePresenter.php
 ```php
     public function actionFacebookLogin()
@@ -128,6 +129,71 @@ HomepagePresenter.php
             $me = $this->socialLogin->google->getMe( $code );
             dump( $me );
             exit();
+        }
+        catch( Exception $e )
+        {
+            $this->flashMessage( $e->getMessage(), "alert-danger" );
+            $this->redirect("Homepage:default");
+        }
+    }
+    ...
+```
+
+### Login with backlink ###
+Use it when you want to redirect to specific URL after success login
+
+HomepagePresenter.php
+```php
+    private $backlink = null;
+    
+    //render where are links to social networks  
+    public function renderIn() {
+        if ($this->backlink) {
+            $this->socialLogin->facebook->setState($this->backlink);
+            $this->socialLogin->google->setState($this->backlink);
+        }
+        
+        //$facebookLoginUrl = $this->socialLogin->facebook->getLoginUrl();
+        //$googleLoginUrl = $this->socialLogin->google->getLoginUrl();
+        //$twitterLoginUrl = $this->socialLogin->twitter->getLoginUrl();
+    
+        //dump( $this->socialLogin->getSocialLoginCookie() );
+    
+        //$this->template->facebookLastLogin = $this->socialLogin->facebook->isThisServiceLastLogin();
+        //$this->template->googleLastLogin = $this->socialLogin->google->isThisServiceLastLogin();
+        //$this->template->twitterLastLogin = $this->socialLogin->twitter->isThisServiceLastLogin();
+    }
+
+    public function actionFacebookLogin($state = NULL)
+    {
+        try
+        {
+            if ($state) $this->backlink = $state;
+            $me = $this->socialLogin->facebook->getMe( array( FacebookLogin::ID, FacebookLogin::EMAIL, FacebookLogin::NAME, FacebookLogin::FIRST_NAME, FacebookLogin::LAST_NAME ) );
+            //dump( $me );
+            //exit();
+            if($this->backlink != null) {
+                $this->redirect($this->backlink);
+            }
+        }
+        catch( Exception $e )
+        {
+            $this->flashMessage( $e->getMessage(), "alert-danger" );
+            $this->redirect("Homepage:default");
+        }
+    }
+
+    public function actionGoogleLogin( $code, $state = NULL )
+    {
+        try
+        {
+            if ($state) $this->backlink = $state;
+            $me = $this->socialLogin->google->getMe( $code );
+            //dump( $me );
+            //exit();
+            if($this->backlink != null) {
+                $this->redirect($this->backlink);
+            }
         }
         catch( Exception $e )
         {
