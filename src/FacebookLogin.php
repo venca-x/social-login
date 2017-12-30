@@ -179,6 +179,14 @@ class FacebookLogin extends BaseLogin
 		$this->scope = $scope;
 	}
 
+	/**
+	 * Set state
+	 * @param string $state
+	 */
+	public function setState( $state )
+	{
+		$this->helper->getPersistentDataHandler()->set( 'state', $state );
+	}
 
 	/**
 	 * Get URL for login
