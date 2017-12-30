@@ -52,9 +52,9 @@ class GoogleLogin extends BaseLogin
 	 * Set state
 	 * @param string $state
 	 */
-	public function setState( $state )
+	public function setState($state)
 	{
-		$this->helper->getPersistentDataHandler()->set( 'state', $state );
+		$this->helper->getPersistentDataHandler()->set('state', $state);
 	}
 
 
