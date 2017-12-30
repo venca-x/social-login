@@ -115,7 +115,7 @@ HomepagePresenter.php
 ```php
     public function renderIn() {
         if ($this->backlink) {
-            pthis->googleLogin->setState($this->backlink);
+            $this->googleLogin->setState($this->backlink);
             $this->facebookLogin->setState($this->backlink);
     }
 
