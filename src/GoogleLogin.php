@@ -48,6 +48,15 @@ class GoogleLogin extends BaseLogin
     }
 
     /**
+     * Set state
+     * @param string $state
+     */
+    public function setState( $state )
+    {
+        $this->client->setState( $state );
+    }
+
+    /**
      * Get URL for login
      * @return string
      */
