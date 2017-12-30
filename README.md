@@ -113,10 +113,17 @@ BasePresenter.php
 
 HomepagePresenter.php
 ```php
-    public function actionFacebookLogin()
+    public function renderIn() {
+        if ($this->backlink) {
+            pthis->googleLogin->setState($this->backlink);
+            $this->facebookLogin->setState($this->backlink);
+    }
+
+    public function actionFacebookLogin($state = NULL)
     {
         try
         {
+            if ($state) $this->backlink = $state;
             $me = $this->socialLogin->facebook->getMe( array( FacebookLogin::ID, FacebookLogin::EMAIL, FacebookLogin::NAME, FacebookLogin::FIRST_NAME, FacebookLogin::LAST_NAME ) );
             dump( $me );
             exit();
@@ -128,10 +135,11 @@ HomepagePresenter.php
         }
     }
 
-    public function actionGoogleLogin( $code )
+    public function actionGoogleLogin( $code, $state = NULL )
     {
         try
         {
+            if ($state) $this->backlink = $state;
             $me = $this->socialLogin->google->getMe( $code );
             dump( $me );
             exit();
