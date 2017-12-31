@@ -72,24 +72,27 @@ BasePresenter.php
     public function injectSocialLogin( VencaX\SocialLogin $socialLogin )
     {
         $this->socialLogin = $socialLogin;
-		//set scope
+        
+        //set scope
         $this->socialLogin->facebook->setScope( ['email'] );
         $this->socialLogin->google->setScope( array( "https://www.googleapis.com/auth/plus.me", "https://www.googleapis.com/auth/userinfo.email" ) );		
     }
 
-
-    //$facebookLoginUrl = $this->socialLogin->facebook->getLoginUrl();
-    //$googleLoginUrl = $this->socialLogin->google->getLoginUrl();
-    //$twitterLoginUrl = $this->socialLogin->twitter->getLoginUrl();
-
-    //dump( $this->socialLogin->getSocialLoginCookie() );
-
-    //$this->template->facebookLastLogin = $this->socialLogin->facebook->isThisServiceLastLogin();
-    //$this->template->googleLastLogin = $this->socialLogin->google->isThisServiceLastLogin();
-    //$this->template->twitterLastLogin = $this->socialLogin->twitter->isThisServiceLastLogin();
-    ...
+    public function renderIn() {
+        //$facebookLoginUrl = $this->socialLogin->facebook->getLoginUrl();
+        //$googleLoginUrl = $this->socialLogin->google->getLoginUrl();
+        //$twitterLoginUrl = $this->socialLogin->twitter->getLoginUrl();
+        
+        //dump( $this->socialLogin->getSocialLoginCookie() );
+        
+        //$this->template->facebookLastLogin = $this->socialLogin->facebook->isThisServiceLastLogin();
+        //$this->template->googleLastLogin = $this->socialLogin->google->isThisServiceLastLogin();
+        //$this->template->twitterLastLogin = $this->socialLogin->twitter->isThisServiceLastLogin();
+        //...
+    }
 ```
 
+Layout for in.latte:
 ```html
     <a rel="nofollow" href="{$facebookLoginUrl}" {if $facebookLastLogin}class="last-login"{/if}><i class="fa fa-facebook-square fa-lg"></i></a>
     <a rel="nofollow" href="{$googleLoginUrl}" {if $googleLastLogin}class="last-login"{/if}><i class="fa fa-google-plus-square fa-lg"></i></a><br/>
@@ -136,7 +139,7 @@ HomepagePresenter.php
             $this->redirect("Homepage:default");
         }
     }
-    ...
+    //...
 ```
 
 ### Login with backlink ###
