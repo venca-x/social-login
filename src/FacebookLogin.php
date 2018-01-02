@@ -16,7 +16,6 @@ use Nette;
  */
 class FacebookLogin extends BaseLogin
 {
-
 	//me permissions
 	public const ID = 'id';
 
