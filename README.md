@@ -22,7 +22,7 @@ Installation
 
 Install **dev-master** version for **Nette 3.0** (**!!!needs at least PHP 7.1!!!**):
 ```
-composer require venca-x/social-login:~dev-master
+composer require venca-x/social-login:dev-master
 ```
 
 Install **1.0x** version for **Nette 2.4** or **Nette 2.3**:
