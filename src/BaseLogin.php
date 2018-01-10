@@ -6,8 +6,10 @@ namespace VencaX;
 use Nette;
 
 
-class BaseLogin extends Nette\Object
+class BaseLogin
 {
+	use Nette\SmartObject;
+
 	/** @var array params */
 	protected $params;
 
