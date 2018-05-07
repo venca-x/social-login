@@ -10,10 +10,11 @@ social-login
 
 Nette addon for login with social networks
 
-| Version     | Facebook App API | PHP     | Recommended Nette |
-| ---         | ---              | ---     | ---               |
-| dev-master  | 2.11 or own      | \>= 7.1 | Nette 3.0         |
-| 1.0.x       | 2.6              | \>= 5.5 | Nette 2.4, 2.3    |
+| Version     | Facebook App API | PHP     | Recommended Nette             |
+| ---         | ---              | ---     | ---                           |
+| dev-master  | 2.11 or own      | \>= 7.1 | Nette 3.0                     |
+| 1.1.x       | 2.6              | \>= 7.1 | Nette 2.4 (Nette\SmartObject) |
+| 1.0.x       | 2.6              | \>= 5.5 | Nette 2.4, 2.3 (Nette\Object) |
 
 [All permissions for Facebook fields](https://developers.facebook.com/docs/graph-api/reference/user/)
 
@@ -25,7 +26,12 @@ Install **dev-master** version for **Nette 3.0** (**!!!needs at least PHP 7.1!!!
 composer require venca-x/social-login:dev-master
 ```
 
-Install **1.0x** version for **Nette 2.4** or **Nette 2.3**:
+Install **1.1.x** version for **Nette 2.4** (Nette\SmartObject):
+```
+composer require venca-x/social-login:^1.1.0
+```
+
+Install **1.0.x** version for **Nette 2.4** or **Nette 2.3** (Nette\Object):
 ```
 composer require venca-x/social-login:^1.0.0
 ```
