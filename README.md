@@ -10,10 +10,10 @@ social-login
 
 Nette addon for logint with social networks
 
-Version 1.0.0 use Facebook App API version v 2.6
+Version 1.1.0 use Facebook App API version v 2.6
 [All permissions for Facebook fields](https://developers.facebook.com/docs/graph-api/reference/user/)
 
-Branch v 1.0.x is for Nette 2.4
+This branch v 1.1.x is for Nette 2.4 and Nette\SmartObject
 ------------
 
 Installation
