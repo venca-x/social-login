@@ -1,6 +1,5 @@
 {
   "name": "social-login",
-  "version": "1.0.0",
   "description": "Nette addon. Login with social networks ( Faceboook, Google, Twitter )",
   "main": "Gruntfile.js",
   "directories": {
