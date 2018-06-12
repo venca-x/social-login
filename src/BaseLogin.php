@@ -7,7 +7,7 @@ use Nette;
 
 class BaseLogin
 {
-    Nette\SmartObject;
+    use Nette\SmartObject;
 
     /** @var array params */
     protected $params;
