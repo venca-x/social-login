@@ -11,9 +11,9 @@ $container = require __DIR__ . '/bootstrap.php';
 
 class InstanceTest extends Tester\TestCase
 {
-
 	/** @var VencaX\SocialLogin */
 	private $socialLogin;
+
 
 	public function setUp()
 	{
@@ -39,6 +39,7 @@ class InstanceTest extends Tester\TestCase
 		//Assert::same('', $urlParseQueryArray['scope']);
 	}
 
+
 	public function testGoogleLoginUrl()
 	{
 		$url = $this->socialLogin->google->getLoginUrl();
@@ -55,6 +56,7 @@ class InstanceTest extends Tester\TestCase
 		Assert::same('123456789', $urlParseQueryArray['client_id']);
 		Assert::same('http://www.muj-web.cz/homepage/google-login', $urlParseQueryArray['redirect_uri']);
 	}
+
 
 	public function testTwitterLoginUrl()
 	{
