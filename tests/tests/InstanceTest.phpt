@@ -35,7 +35,6 @@ class InstanceTest extends Tester\TestCase
 
 		Assert::same('123456789', $urlParseQueryArray['client_id']);
 		Assert::same('code', $urlParseQueryArray['response_type']);
-		Assert::same('php-sdk-5.6.1', $urlParseQueryArray['sdk']);
 		Assert::same('http://www.muj-web.cz/homepage/facebook-login', $urlParseQueryArray['redirect_uri']);
 		//Assert::same('', $urlParseQueryArray['scope']);
 	}
