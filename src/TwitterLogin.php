@@ -21,8 +21,8 @@ class TwitterLogin extends BaseLogin
 	/** @var array Request token */
 	private $requestToken;
 
-	/** @var string scope */
-	private $scope = '';
+	/** @var array scope */
+	private $scope = [];
 
 	/** @var Nette\Http\Session session */
 	private $session;
@@ -48,9 +48,9 @@ class TwitterLogin extends BaseLogin
 
 	/**
 	 * Set scope
-	 * @param $scope
+	 * @param array $scope
 	 */
-	public function setScope($scope)
+	public function setScope(array $scope)
 	{
 		$this->scope = $scope;
 	}
@@ -112,7 +112,7 @@ class TwitterLogin extends BaseLogin
 		//The user has been verified
 		//$sessionSection->status = 'verified';
 
-		$user_info = $this->twitterOAuth->get('account/verify_credentials');
+		$user_info = $this->twitterOAuth->get('account/verify_credentials', $this->scope);
 
 		$this->setSocialLoginCookie(self::SOCIAL_NAME);
 

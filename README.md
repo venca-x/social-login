@@ -88,7 +88,10 @@ BasePresenter.php
         
         //set scope
         $this->socialLogin->facebook->setScope( ['email'] );
-        $this->socialLogin->google->setScope( array( "https://www.googleapis.com/auth/plus.me", "https://www.googleapis.com/auth/userinfo.email" ) );		
+        $this->socialLogin->google->setScope( array( "https://www.googleapis.com/auth/plus.me", "https://www.googleapis.com/auth/userinfo.email" ) );
+
+        //If you need to get email from twitter you can set scope (https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-account-verify_credentials)
+        $this->socialLogin->twitter->setScope( array( 'include_email' => 'true') );
     }
 
     public function renderIn() {
