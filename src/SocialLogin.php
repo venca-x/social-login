@@ -32,16 +32,21 @@ class SocialLogin extends BaseLogin
 		$this->httpResponse = $httpResponse;
 		$this->httpRequest = $httpRequest;
 
-		if (isset($this->params['facebook']) && count($this->params['facebook']) > 0) {
+		if ($this->existParamArray($this->params['facebook'])) {
 			$this->facebook = new FacebookLogin($this->params['facebook'], $this->cookieName, $this->httpResponse, $this->httpRequest);
 		}
 
-		if (isset($this->params['google']) && count($this->params['google']) > 0) {
+		if ($this->existParamArray($this->params['google'])) {
 			$this->google = new GoogleLogin($this->params['google'], $cookieName, $this->httpResponse, $this->httpRequest);
 		}
 
-		if (isset($this->params['twitter']) && count($this->params['twitter']) > 0) {
+		if ($this->existParamArray($this->params['twitter'])) {
 			$this->twitter = new TwitterLogin($this->params['twitter'], $cookieName, $session, $this->httpResponse, $this->httpRequest);
 		}
+	}
+
+	private function existParamArray($param)
+	{
+		return is_array($param) && count($param) > 0;
 	}
 }
