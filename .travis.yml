@@ -3,6 +3,7 @@ php:
     - 7.1
     - 7.2
     - 7.3
+    - 7.4
 
 before_install:
     # turn off XDebug
@@ -35,7 +36,7 @@ jobs:
 
             script:
                 - php temp/code-checker/src/code-checker.php -d src -d tests --short-arrays --strict-types
-                - php temp/coding-standard/ecs check src tests --config temp/coding-standard/coding-standard-php71.neon
+                - php temp/coding-standard/ecs check src tests --config temp/coding-standard/coding-standard-php71.yml
 
 
         -   stage: Code Coverage
