@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('installDependencies', ['shell:composer_self_update','shell:composer_install', 'shell:installCodeSoft']);
+    grunt.registerTask('installDependencies', ['shell:composer_self_update','shell:composer_install']);
     grunt.registerTask('test', ['shell:test']);
     grunt.registerTask('netteCodeChecker', ['shell:netteCodeChecker']);
     grunt.registerTask('netteCodeCheckerFIX', ['shell:netteCodeCheckerFIX']);

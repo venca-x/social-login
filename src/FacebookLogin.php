@@ -125,7 +125,7 @@ class FacebookLogin extends BaseLogin
 
 	public const SOCIAL_NAME = 'facebook';
 
-	public const DEFAULT_FB_GRAPH_VERSION = 'v2.11';
+	public const DEFAULT_FB_GRAPH_VERSION = 'v8.0';
 
 	/** @var Facebook\Facebook */
 	private $fb;

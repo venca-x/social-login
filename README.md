@@ -12,8 +12,8 @@ Nette addon for login with social networks
 
 | Version     | Facebook App API | PHP     | Recommended Nette             |
 | ---         | ---              | ---     | ---                           |
-| dev-master  | 2.11 or own      | \>= 7.1 | Nette 3.0                     |
-| 1.2.x       | 2.11 or own      | \>= 7.1 | Nette 3.0                     |
+| dev-master  | 8.0 or own       | \>= 7.1 | Nette 3.0                     |
+| 1.2.x       | 8.0 or own       | \>= 7.1 | Nette 3.0                     |
 | 1.1.x       | 2.6              | \>= 7.0 | Nette 2.4 (Nette\SmartObject) |
 | 1.0.x       | 2.6              | \>= 5.5 | Nette 2.4, 2.3 (Nette\Object) |
 
@@ -53,7 +53,7 @@ config.neon
 			appId: '123456789'
 			appSecret: '987654321'
 			callbackURL: 'http://www.muj-web.cz/homepage/facebook-login'
-			defaultFbGraphVersion: 'v2.11'
+			defaultFbGraphVersion: 'v8.0'
 		google:
 			clientId: '123456789'
 			clientSecret: '987654321'

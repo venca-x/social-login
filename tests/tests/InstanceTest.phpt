@@ -31,7 +31,7 @@ class InstanceTest extends Tester\TestCase
 
 		Assert::same('https', $urlParseArray['scheme']);
 		Assert::same('www.facebook.com', $urlParseArray['host']);
-		Assert::same('/v2.11/dialog/oauth', $urlParseArray['path']);
+		Assert::same('/v8.0/dialog/oauth', $urlParseArray['path']);
 
 		Assert::same('123456789', $urlParseQueryArray['client_id']);
 		Assert::same('code', $urlParseQueryArray['response_type']);

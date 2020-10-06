@@ -3,7 +3,7 @@ parameters:
 		appId: '123456789'
 		appSecret: '987654321'
 		callbackURL: 'http://www.muj-web.cz/homepage/facebook-login'
-		defaultFbGraphVersion: 'v2.11'
+		defaultFbGraphVersion: 'v8.0'
 	google:
 		clientId: '123456789'
 		clientSecret: '987654321'
