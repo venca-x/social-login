@@ -30,7 +30,7 @@ jobs:
             php: 7.1
             install:
                 # Install Nette Code Checker
-                - travis_retry composer create-project nette/code-checker temp/code-checker ~3 --no-progress
+                - travis_retry composer create-project nette/code-checker temp/code-checker --no-progress
                 # Install Nette Coding Standard
                 - travis_retry composer create-project nette/coding-standard temp/coding-standard --no-progress
 
