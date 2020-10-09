@@ -27,7 +27,7 @@ jobs:
 
 
         -   stage: Code Standard Checker
-            php: 7.1
+            php: 7.4
             install:
                 # Install Nette Code Checker
                 - travis_retry composer create-project nette/code-checker temp/code-checker --no-progress
