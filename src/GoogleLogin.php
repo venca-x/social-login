@@ -10,7 +10,7 @@ class GoogleLogin extends BaseLogin
 {
 	public const SOCIAL_NAME = 'google';
 
-	/** @var Google_Client */
+	/** @var \Google_Client */
 	private $client;
 
 	/** @var array scope */
@@ -55,7 +55,7 @@ class GoogleLogin extends BaseLogin
 	 */
 	public function setState($state)
 	{
-		$this->helper->getPersistentDataHandler()->set('state', $state);
+		$this->client->setState($state);
 	}
 
 
