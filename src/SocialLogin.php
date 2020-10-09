@@ -45,6 +45,7 @@ class SocialLogin extends BaseLogin
 		}
 	}
 
+
 	private function existParamArray($param)
 	{
 		return is_array($param) && count($param) > 0;
