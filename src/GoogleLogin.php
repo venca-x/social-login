@@ -74,7 +74,7 @@ class GoogleLogin extends BaseLogin
 	/**
 	 * Return info about login user
 	 * @param $code
-	 * @return \Google_Service_Oauth2_Userinfoplus
+	 * @return \Google_Service_Oauth2_Userinfo
 	 * @throws Exception
 	 */
 	public function getMe($code)
