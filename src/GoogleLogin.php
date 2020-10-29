@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace VencaX;
 
 use Exception;
+use Google;
 use Nette;
 
 class GoogleLogin extends BaseLogin
@@ -31,7 +32,7 @@ class GoogleLogin extends BaseLogin
 		$this->httpResponse = $httpResponse;
 		$this->httpRequest = $httpRequest;
 
-		$this->client = new \Google_Client();
+		$this->client = new Google\Client();
 
 		$this->client->setClientId($this->params['clientId']);
 		$this->client->setClientSecret($this->params['clientSecret']);
