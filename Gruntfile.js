@@ -31,10 +31,10 @@ module.exports = function (grunt) {
                 command: 'php ..\\..\\nette-code-checker\\code-checker -d src -d tests --short-arrays --strict-types --fix'
             },
             netteCodingStandard: {
-                command: 'php ..\\..\\nette-coding-standard\\ecs check src tests --config ..\\..\\nette-coding-standard\\coding-standard-php71.yml'
+                command: 'php ..\\..\\nette-coding-standard\\ecs check src tests --preset php71'
             },
             netteCodingStandardFIX: {
-                command: 'php ..\\..\\nette-coding-standard\\ecs check src tests --config ..\\..\\nette-coding-standard\\coding-standard-php71.yml --fix'
+                command: 'php ..\\..\\nette-coding-standard\\ecs check src tests --preset php71 --fix'
             }
         }
     });
