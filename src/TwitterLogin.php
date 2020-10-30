@@ -36,8 +36,13 @@ class TwitterLogin extends BaseLogin
 	 * @param Nette\Http\IResponse $httpResponse
 	 * @param Nette\Http\IRequest $httpRequest
 	 */
-	public function __construct($params, $cookieName, Nette\Http\Session $session, Nette\Http\IResponse $httpResponse, Nette\Http\IRequest $httpRequest)
-	{
+	public function __construct(
+		$params,
+		$cookieName,
+		Nette\Http\Session $session,
+		Nette\Http\IResponse $httpResponse,
+		Nette\Http\IRequest $httpRequest
+	) {
 		$this->params = $params;
 		$this->cookieName = $cookieName;
 		$this->session = $session;

@@ -140,14 +140,12 @@ class FacebookLogin extends BaseLogin
 	private $callBackUrl = '';
 
 
-	/**
-	 * @param $params array - data from config.neon
-	 * @param $cookieName String cookie name
-	 * @param Nette\Http\IResponse $httpResponse
-	 * @param Nette\Http\IRequest $httpRequest
-	 */
-	public function __construct($params, $cookieName, Nette\Http\IResponse $httpResponse, Nette\Http\IRequest $httpRequest)
-	{
+	public function __construct(
+		$params,
+		$cookieName,
+		Nette\Http\IResponse $httpResponse,
+		Nette\Http\IRequest $httpRequest
+	) {
 		$this->params = $params;
 		$this->cookieName = $cookieName;
 		$this->httpResponse = $httpResponse;
@@ -155,7 +153,7 @@ class FacebookLogin extends BaseLogin
 		$this->callBackUrl = $this->params['callbackURL'];
 
 		$default_graph_version = self::DEFAULT_FB_GRAPH_VERSION;
-		if (array_key_exists ('defaultFbGraphVersion', $this->params) && $this->params['defaultFbGraphVersion'] != '') {
+		if (array_key_exists('defaultFbGraphVersion', $this->params) && $this->params['defaultFbGraphVersion'] != '') {
 			//set users defaultFbGraphVersion
 			$default_graph_version = $this->params['defaultFbGraphVersion'];
 		}
@@ -216,7 +214,7 @@ class FacebookLogin extends BaseLogin
 
 		if ($fields == '' || !is_array($fields) || count($fields) == 0) {
 			//array is empty
-			$fields = [self::ID];//set ID field
+			$fields = [self::ID]; //set ID field
 		}
 
 		try {

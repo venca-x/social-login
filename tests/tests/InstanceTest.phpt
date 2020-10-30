@@ -65,5 +65,5 @@ class InstanceTest extends Tester\TestCase
 	}
 }
 
-$test = new InstanceTest();
+$test = new InstanceTest;
 $test->run();

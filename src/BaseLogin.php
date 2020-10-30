@@ -13,7 +13,7 @@ class BaseLogin
 	/** @var array params */
 	protected $params;
 
-	/** @var String cookie name - save last used service for login */
+	/** @var string cookie name - save last used service for login */
 	protected $cookieName;
 
 	/** @var Nette\Http\IResponse */

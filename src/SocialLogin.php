@@ -18,15 +18,13 @@ class SocialLogin extends BaseLogin
 	public $twitter;
 
 
-	/**
-	 * @param $params params from cnofig.neon
-	 * @param $params $cookieName cookie name - save last used service for login
-	 * @param Nette\Http\IResponse $httpResponse
-	 * @param Nette\Http\IRequest $httpRequest
-	 * @param Nette\Http\Session $session
-	 */
-	public function __construct($params, $cookieName, Nette\Http\IResponse $httpResponse, Nette\Http\IRequest $httpRequest, Nette\Http\Session $session)
-	{
+	public function __construct(
+		$params,
+		$cookieName,
+		Nette\Http\IResponse $httpResponse,
+		Nette\Http\IRequest $httpRequest,
+		Nette\Http\Session $session
+	) {
 		$this->params = $params;
 		$this->cookieName = $cookieName;
 		$this->httpResponse = $httpResponse;
