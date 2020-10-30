@@ -7,7 +7,7 @@ use Tester;
 use Tester\Assert;
 use VencaX;
 
-$container = require __DIR__ . '/bootstrap.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
 class InstanceTest extends Tester\TestCase
 {
