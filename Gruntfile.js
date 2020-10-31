@@ -18,7 +18,7 @@ module.exports = function (grunt) {
                 command: 'composer update --no-progress --prefer-dist --prefer-lowest --prefer-stable'
             },
             test: {
-                command: 'vendor\\bin\\tester tests -s -p php'
+                command: 'vendor\\bin\\tester -c tests/php.ini -s tests'
             },
             installCodeSoft: {
                 command: 'composer create-project nette/coding-standard nette-coding-standard',
