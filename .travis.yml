@@ -1,6 +1,5 @@
 language: php
 php:
-    - 7.1
     - 7.2
     - 7.3
     - 7.4
@@ -13,7 +12,7 @@ install:
     - travis_retry composer install --no-progress --prefer-dist
 
 script:
-    - vendor/bin/tester tests -s
+    - vendor/bin/tester -c tests/php.ini -s tests
 
 after_failure:
     # Print *.actual content
@@ -36,7 +35,7 @@ jobs:
 
             script:
                 - php temp/code-checker/code-checker -d src -d tests --short-arrays --strict-types
-                - php temp/coding-standard/ecs check src tests --config temp/coding-standard/coding-standard-php71.yml
+                - php temp/coding-standard/ecs check src tests --preset php71
 
 
         -   stage: Code Coverage

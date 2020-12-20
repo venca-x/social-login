@@ -25,14 +25,18 @@ class GoogleLogin extends BaseLogin
 	 * @param Nette\Http\IResponse $httpResponse
 	 * @param Nette\Http\IRequest $httpRequest
 	 */
-	public function __construct($params, $cookieName, Nette\Http\IResponse $httpResponse, Nette\Http\IRequest $httpRequest)
-	{
+	public function __construct(
+		$params,
+		$cookieName,
+		Nette\Http\IResponse $httpResponse,
+		Nette\Http\IRequest $httpRequest
+	) {
 		$this->params = $params;
 		$this->cookieName = $cookieName;
 		$this->httpResponse = $httpResponse;
 		$this->httpRequest = $httpRequest;
 
-		$this->client = new Google\Client();
+		$this->client = new Google\Client;
 
 		$this->client->setClientId($this->params['clientId']);
 		$this->client->setClientSecret($this->params['clientSecret']);

@@ -1,7 +1,7 @@
 social-login
 ===============
 
-[![Build Status](https://travis-ci.org/venca-x/social-login.svg)](https://travis-ci.org/venca-x/social-login)
+[![Build Status](https://travis-ci.com/venca-x/social-login.svg)](https://travis-ci.com/venca-x/social-login)
 [![Coverage Status](https://coveralls.io/repos/github/venca-x/social-login/badge.svg?branch=master)](https://coveralls.io/github/venca-x/social-login?branch=master) 
 [![Latest Stable Version](https://poser.pugx.org/venca-x/social-login/v/stable.svg)](https://packagist.org/packages/venca-x/social-login) 
 [![Latest Unstable Version](https://poser.pugx.org/venca-x/social-login/v/unstable.svg)](https://packagist.org/packages/venca-x/social-login) 
@@ -12,7 +12,7 @@ Nette addon for login with social networks
 
 | Version     | Facebook App API | PHP     | Recommended Nette             |
 | ---         | ---              | ---     | ---                           |
-| dev-master  | 8.0 or own       | \>= 7.1 | Nette 3.0                     |
+| dev-master  | 8.0 or own       | \>= 7.2 | Nette 3.0                     |
 | 1.2.x       | 8.0 or own       | \>= 7.1 | Nette 3.0                     |
 | 1.1.x       | 2.6              | \>= 7.0 | Nette 2.4 (Nette\SmartObject) |
 | 1.0.x       | 2.6              | \>= 5.5 | Nette 2.4, 2.3 (Nette\Object) |

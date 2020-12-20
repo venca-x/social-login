@@ -18,7 +18,7 @@ module.exports = function (grunt) {
                 command: 'composer update --no-progress --prefer-dist --prefer-lowest --prefer-stable'
             },
             test: {
-                command: 'vendor\\bin\\tester tests -s -p php'
+                command: 'vendor\\bin\\tester -c tests/php.ini -s tests'
             },
             installCodeSoft: {
                 command: 'composer create-project nette/coding-standard nette-coding-standard',
@@ -31,10 +31,10 @@ module.exports = function (grunt) {
                 command: 'php ..\\..\\nette-code-checker\\code-checker -d src -d tests --short-arrays --strict-types --fix'
             },
             netteCodingStandard: {
-                command: 'php ..\\..\\nette-coding-standard\\ecs check src tests --config ..\\..\\nette-coding-standard\\coding-standard-php71.yml'
+                command: 'php ..\\..\\nette-coding-standard\\ecs check src tests --preset php71'
             },
             netteCodingStandardFIX: {
-                command: 'php ..\\..\\nette-coding-standard\\ecs check src tests --config ..\\..\\nette-coding-standard\\coding-standard-php71.yml --fix'
+                command: 'php ..\\..\\nette-coding-standard\\ecs check src tests --preset php71 --fix'
             }
         }
     });
