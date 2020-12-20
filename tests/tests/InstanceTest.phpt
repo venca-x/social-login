@@ -3,22 +3,28 @@ declare(strict_types=1);
 
 namespace Test;
 
+use Nette;
 use Tester;
 use Tester\Assert;
-use VencaX;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
 class InstanceTest extends Tester\TestCase
 {
-	/** @var VencaX\SocialLogin */
+	private $container;
+
 	private $socialLogin;
+
+
+	public function __construct(Nette\DI\Container $container)
+	{
+		$this->container = $container;
+	}
 
 
 	public function setUp()
 	{
-		$container = require __DIR__ . '/bootstrap.php';
-		$this->socialLogin = $container->getByType('VencaX\SocialLogin');
+		$this->socialLogin = $this->container->getByType('VencaX\SocialLogin');
 	}
 
 
@@ -72,5 +78,10 @@ class InstanceTest extends Tester\TestCase
 	}
 }
 
-$test = new InstanceTest;
+require __DIR__ . '/Bootstrap.php';
+
+$container = \Test\Bootstrap::bootForTests()
+	->createContainer();
+
+$test = new InstanceTest($container);
 $test->run();
