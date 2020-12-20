@@ -21,9 +21,6 @@ class TwitterLogin extends BaseLogin
 	/** @var array Request token */
 	private $requestToken;
 
-	/** @var string scope */
-	private $scope = '';
-
 	/** @var Nette\Http\Session session */
 	private $session;
 
@@ -48,16 +45,6 @@ class TwitterLogin extends BaseLogin
 		$this->session = $session;
 		$this->httpResponse = $httpResponse;
 		$this->httpRequest = $httpRequest;
-	}
-
-
-	/**
-	 * Set scope
-	 * @param $scope
-	 */
-	public function setScope($scope)
-	{
-		$this->scope = $scope;
 	}
 
 
