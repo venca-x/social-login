@@ -30,7 +30,7 @@ class InstanceTest extends Tester\TestCase
 
 	public function testFacebookLoginUrl()
 	{
-		$this->socialLogin->facebook->setScope( ['email'] );
+		$this->socialLogin->facebook->setScope(['email']);
 		$this->socialLogin->facebook->setState('https://www.mypage.cz/sign/facebook');
 
 		$url = $this->socialLogin->facebook->getLoginUrl();
@@ -55,7 +55,7 @@ class InstanceTest extends Tester\TestCase
 
 	public function testGoogleLoginUrl()
 	{
-		$this->socialLogin->google->setScope( array( "https://www.googleapis.com/auth/plus.me", "https://www.googleapis.com/auth/userinfo.email" ) );
+		$this->socialLogin->google->setScope(['https://www.googleapis.com/auth/plus.me', 'https://www.googleapis.com/auth/userinfo.email']);
 		$this->socialLogin->google->setState('https://www.mypage.cz/sign/google');
 
 		$url = $this->socialLogin->google->getLoginUrl();
