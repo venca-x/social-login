@@ -194,8 +194,7 @@ class FacebookLogin extends BaseLogin
 	 */
 	public function getLoginUrl()
 	{
-		$loginUrl = $this->helper->getLoginUrl($this->callBackUrl, $this->scope);
-		return $loginUrl;
+		return $this->helper->getLoginUrl($this->callBackUrl, $this->scope);
 	}
 
 

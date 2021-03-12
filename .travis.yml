@@ -3,6 +3,7 @@ php:
     - 7.2
     - 7.3
     - 7.4
+    - 8.0
 
 before_install:
     # turn off XDebug
@@ -32,23 +33,22 @@ jobs:
                 - travis_retry composer create-project nette/code-checker temp/code-checker --no-progress
                 # Install Nette Coding Standard
                 - travis_retry composer create-project nette/coding-standard temp/coding-standard --no-progress
-
             script:
                 - php temp/code-checker/code-checker -d src -d tests --short-arrays --strict-types
                 - php temp/coding-standard/ecs check src tests --preset php71
 
-
         -   stage: Code Coverage
+            php: 7.4
             script:
                 - vendor/bin/tester -p phpdbg tests -s --coverage ./coverage.xml --coverage-src ./src
             after_script:
-                - wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
+                - wget https://github.com/php-coveralls/php-coveralls/releases/download/v1.0.1/coveralls.phar
                 - php coveralls.phar --verbose --config tests/.coveralls.yml
 
-
     allow_failures:
-        -   stage: Code Coverage
-        -   env: title="Lowest Dependencies"
+        - stage: Code Coverage
+        - env: title="Lowest Dependencies"
+        - php: 8.0
 
 
 sudo: false
