@@ -68,7 +68,12 @@ class TwitterLogin extends BaseLogin
 		$sessionSection->oauth_token = $token = $this->requestToken['oauth_token'];
 		$sessionSection->oauth_token_secret = $this->requestToken['oauth_token_secret'];
 
-		$loginUrl = $this->twitterOAuth->getAuthorizeURL($this->requestToken); // Use Sign in with Twitter
+		$loginUrl = $this->twitterOAuth->url(
+			'oauth/authorize',
+			[
+				'oauth_token' => $this->params['callbackURL'],
+			]
+		);
 		return $loginUrl;
 	}
 
