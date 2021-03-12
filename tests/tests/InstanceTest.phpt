@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Test;
 
+use Abraham;
 use Nette;
 use Tester;
 use Tester\Assert;
@@ -81,8 +82,10 @@ class InstanceTest extends Tester\TestCase
 
 	public function testTwitterLoginUrl()
 	{
-		//$url = $this->socialLogin->twitter->getLoginUrl();
-		//Assert::same(false, $this->socialLogin->twitter->getSocialLoginCookie());
+		Assert::exception(function () {
+			$this->socialLogin->twitter->getLoginUrl();
+		}, Abraham\TwitterOAuth\TwitterOAuthException::class, '{"errors":[{"code":32,"message":"Could not authenticate you."}]}');
+
 		Assert::same(false, $this->socialLogin->twitter->isThisServiceLastLogin());
 	}
 }

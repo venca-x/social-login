@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace VencaX;
 
+use Abraham;
 use Exception;
 use Nette;
 
@@ -15,7 +16,7 @@ class TwitterLogin extends BaseLogin
 {
 	public const SOCIAL_NAME = 'twitter';
 
-	/** @var \TwitterOAuth */
+	/** @var Abraham\TwitterOAuth\TwitterOAuth */
 	private $twitterOAuth;
 
 	/** @var array Request token */
@@ -55,8 +56,13 @@ class TwitterLogin extends BaseLogin
 	 */
 	public function getLoginUrl()
 	{
-		$this->twitterOAuth = new \TwitterOAuth($this->params['consumerKey'], $this->params['consumerSecret']);
-		$this->requestToken = $this->twitterOAuth->getRequestToken($this->params['callbackURL']);
+		$this->twitterOAuth = new Abraham\TwitterOAuth\TwitterOAuth($this->params['consumerKey'], $this->params['consumerSecret']);
+		$this->requestToken = $this->twitterOAuth->oauth(
+			'oauth/request_token',
+			[
+				'oauth_callback' => $this->params['callbackURL'],
+			]
+		);
 
 		$sessionSection = $this->session->getSection('twitter');
 		$sessionSection->oauth_token = $token = $this->requestToken['oauth_token'];
@@ -84,7 +90,7 @@ class TwitterLogin extends BaseLogin
 		}
 
 		//Create TwitteroAuth object with app key/secret and token key/secret from default phase
-		$this->twitterOAuth = new \TwitterOAuth($this->params['consumerKey'], $this->params['consumerSecret'], $sessionSection->oauth_token, $sessionSection->oauth_token_secret);
+		$this->twitterOAuth = new Abraham\TwitterOAuth\TwitterOAuth($this->params['consumerKey'], $this->params['consumerSecret'], $sessionSection->oauth_token, $sessionSection->oauth_token_secret);
 
 		//Request access tokens from twitter
 		$access_token = $this->twitterOAuth->getAccessToken($oauthVerifier);
