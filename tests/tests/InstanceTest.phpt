@@ -86,6 +86,10 @@ class InstanceTest extends Tester\TestCase
 			$this->socialLogin->twitter->getLoginUrl();
 		}, Abraham\TwitterOAuth\TwitterOAuthException::class, '{"errors":[{"code":32,"message":"Could not authenticate you."}]}');
 
+		Assert::exception(function () {
+			$this->socialLogin->twitter->getMe('oauthToken', 'oauthVerifier');
+		}, \Exception::class, 'Twitter token is old. Try again login');
+
 		Assert::same(false, $this->socialLogin->twitter->isThisServiceLastLogin());
 	}
 }
