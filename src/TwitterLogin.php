@@ -71,7 +71,7 @@ class TwitterLogin extends BaseLogin
 		$loginUrl = $this->twitterOAuth->url(
 			'oauth/authorize',
 			[
-				'oauth_token' => $this->params['callbackURL'],
+				'oauth_token' => $this->requestToken['oauth_token'],
 			]
 		);
 		return $loginUrl;
@@ -98,24 +98,22 @@ class TwitterLogin extends BaseLogin
 		$this->twitterOAuth = new Abraham\TwitterOAuth\TwitterOAuth($this->params['consumerKey'], $this->params['consumerSecret'], $sessionSection->oauth_token, $sessionSection->oauth_token_secret);
 
 		//Request access tokens from twitter
-		$access_token = $this->twitterOAuth->getAccessToken($oauthVerifier);
+		$access_token = $this->twitterOAuth->oauth(
+			'oauth/access_token',
+			[
+				'oauth_verifier' => $oauthVerifier,
+			]
+		);
+
+		$this->twitterOAuth = new Abraham\TwitterOAuth\TwitterOAuth($this->params['consumerKey'], $this->params['consumerSecret'], $access_token['oauth_token'], $access_token['oauth_token_secret']);
+
+		$user_info = $this->twitterOAuth->get('account/verify_credentials');
 
 		//Save the access tokens
 		$sessionSection->access_token = $access_token;
 
 		// Remove no longer needed request tokens
-		unset($sessionSection->oauth_token , $sessionSection->oauth_token_secret);
-
-
-		if ($this->twitterOAuth->http_code != 200) {
-			//Save HTTP status for error dialog on connnect page.
-			throw new Exception('Twitter login. Something is wrong');
-		}
-
-		//The user has been verified
-		//$sessionSection->status = 'verified';
-
-		$user_info = $this->twitterOAuth->get('account/verify_credentials');
+		unset($sessionSection->oauth_token, $sessionSection->oauth_token_secret);
 
 		$this->setSocialLoginCookie(self::SOCIAL_NAME);
 
