@@ -113,13 +113,6 @@ Layout for in.latte:
     <a rel="nofollow" href="{plink User:registration}"><i class="fa fa-plus-square fa-lg"></i> Zaregistrovat</a>
 ```
 
-```php
-    public function actionTwitterLogin()
-    {
-        $this->redirectUrl( $this->socialLogin->twitter->getLoginUrl( $this->presenter->link( '//Homepage:googleLogin' ) ) );
-    }
-```
-
 ### Simple login ###
 HomepagePresenter.php
 ```php
@@ -129,7 +122,7 @@ HomepagePresenter.php
         {
             $me = $this->socialLogin->facebook->getMe( array( FacebookLogin::ID, FacebookLogin::EMAIL, FacebookLogin::NAME, FacebookLogin::FIRST_NAME, FacebookLogin::LAST_NAME ) );
             dump( $me );
-            exit();
+            exit;
         }
         catch( Exception $e )
         {
@@ -137,14 +130,14 @@ HomepagePresenter.php
             $this->redirect("Homepage:default");
         }
     }
-
+    
     public function actionGoogleLogin( $code )
     {
         try
         {
             $me = $this->socialLogin->google->getMe( $code );
             dump( $me );
-            exit();
+            exit;
         }
         catch( Exception $e )
         {
@@ -153,6 +146,22 @@ HomepagePresenter.php
         }
     }
     //...
+```
+### Simple logint with Twitter ###
+
+```php
+    public function actionTwitterLogin($oauth_token, $oauth_verifier)
+    {
+        try {
+            $me = $this->socialLogin->twitter->getMe($oauth_token, $oauth_verifier);
+            //$me = $this->socialLogin->twitter->getMe($oauth_token, $oauth_verifier, true);//when zou want user's email
+            dump($me);
+            exit;
+        } catch (Exception $e) {
+            $this->flashMessage($e->getMessage(), 'alert-danger');
+            $this->redirect('Homepage:default');
+        }
+    }
 ```
 
 ### Login with backlink ###
