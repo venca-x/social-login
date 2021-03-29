@@ -82,10 +82,11 @@ class TwitterLogin extends BaseLogin
 	 * Return info about login user
 	 * @param $oauthToken
 	 * @param $oauthVerifier
-	 * @return \API|mixed
-	 * @throws Exception
+	 * @param false $includeEmail
+	 * @return array|object
+	 * @throws Abraham\TwitterOAuth\TwitterOAuthException
 	 */
-	public function getMe($oauthToken, $oauthVerifier)
+	public function getMe($oauthToken, $oauthVerifier, $includeEmail = false)
 	{
 		$sessionSection = $this->session->getSection('twitter');
 
@@ -107,7 +108,11 @@ class TwitterLogin extends BaseLogin
 
 		$this->twitterOAuth = new Abraham\TwitterOAuth\TwitterOAuth($this->params['consumerKey'], $this->params['consumerSecret'], $access_token['oauth_token'], $access_token['oauth_token_secret']);
 
-		$user_info = $this->twitterOAuth->get('account/verify_credentials');
+		if ($includeEmail) {
+			$user_info = $this->twitterOAuth->get('account/verify_credentials', ['include_email' => true]);
+		} else {
+			$user_info = $this->twitterOAuth->get('account/verify_credentials');
+		}
 
 		//Save the access tokens
 		$sessionSection->access_token = $access_token;
