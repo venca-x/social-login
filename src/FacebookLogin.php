@@ -4,9 +4,7 @@ declare(strict_types=1);
 namespace VencaX;
 
 use Exception;
-use Facebook;
-use Facebook\FacebookRedirectLoginHelper;
-
+use League;
 use Nette;
 
 /**
@@ -127,11 +125,8 @@ class FacebookLogin extends BaseLogin
 
 	public const DEFAULT_FB_GRAPH_VERSION = 'v8.0';
 
-	/** @var Facebook\Facebook */
-	private $fb;
-
-	/** @var FacebookRedirectLoginHelper */
-	private $helper;
+	/** @var League\OAuth2\Client\Provider\Facebook */
+	private $provider;
 
 	/** @var string scope */
 	private $scope = [];
@@ -158,12 +153,12 @@ class FacebookLogin extends BaseLogin
 			$default_graph_version = $this->params['defaultFbGraphVersion'];
 		}
 
-		$this->fb = new Facebook\Facebook([
-			'app_id' => $this->params['appId'],
-			'app_secret' => $this->params['appSecret'],
-			'default_graph_version' => $default_graph_version,
+		$this->provider = new League\OAuth2\Client\Provider\Facebook([
+			'clientId' => $this->params['appId'],
+			'clientSecret' => $this->params['appSecret'],
+			'redirectUri' => $this->callBackUrl,
+			'graphApiVersion' => $default_graph_version,
 		]);
-		$this->helper = $this->fb->getRedirectLoginHelper();
 	}
 
 
@@ -178,65 +173,45 @@ class FacebookLogin extends BaseLogin
 
 
 	/**
-	 * Set state
-	 * @param string $state
-	 */
-	public function setState($state)
-	{
-		$this->helper->getPersistentDataHandler()->set('state', $state);
-	}
-
-
-	/**
 	 * Get URL for login
-	 * @param string $callbackURL
-	 * @return string URL login
+	 * @return string
 	 */
 	public function getLoginUrl()
 	{
-		return $this->helper->getLoginUrl($this->callBackUrl, $this->scope);
+		$loginUrl = $this->provider->getAuthorizationUrl(['scope' => $this->scope]);
+		$_SESSION['oauth2state'] = $this->provider->getState();
+		return $loginUrl;
 	}
 
 
 	/**
 	 * Return info about facebook user
-	 * @param $fields
+	 * @param $fields Deprecated: this parameter is not necessary - return whole array
 	 * @return array
-	 * @throws Exception
+	 * @throws League\OAuth2\Client\Provider\Exception\IdentityProviderException
 	 */
 	public function getMe($fields)
 	{
-		$accessTokenObject = $this->helper->getAccessToken($this->callBackUrl);
-		if ($accessTokenObject == null) {
-			throw new Exception('User not allowed permissions');
-		}
+		$code = $this->httpRequest->getQuery('code');
+		if ($code !== null && $code == $_SESSION['oauth2state']) {
 
-		if ($fields == '' || !is_array($fields) || count($fields) == 0) {
-			//array is empty
-			$fields = [self::ID]; //set ID field
-		}
+			// Try to get an access token (using the authorization code grant)
+			$token = $this->provider->getAccessToken('authorization_code', [
+				'code' => $code,
+			]);
 
-		try {
-			if (isset($_SESSION['facebook_access_token'])) {
-				$this->fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-			} else {
-				$_SESSION['facebook_access_token'] = (string) $accessTokenObject;
+			try {
+				// We got an access token, let's now get the user's details
+				$user = $this->provider->getResourceOwner($token);
+				return $user->toArray();
+			} catch (Exception $e) {
+				// Failed to get user details
+				throw new Exception('FacebookLogin - token exception: ' . $e->getMessage());
 			}
 
-			$client = $this->fb->getOAuth2Client();
-			$accessToken = $client->getLongLivedAccessToken($accessTokenObject->getValue());
-			$response = $this->fb->get('/me?fields=' . implode(',', $fields), $accessToken);
-
-			$this->setSocialLoginCookie(self::SOCIAL_NAME);
-
-			return $response->getDecodedBody();
-
-		} catch (Facebook\Exceptions\FacebookResponseException $e) {
-			// When Graph returns an error
-			throw new Exception($e->getMessage());
-		} catch (Facebook\Exceptions\FacebookSDKException $e) {
-			// When validation fails or other local issues
-			throw new Exception($e->getMessage());
+		} else {
+			unset($_SESSION['oauth2state']);
+			throw new Exception('Invalid state');
 		}
 	}
 
@@ -247,10 +222,6 @@ class FacebookLogin extends BaseLogin
 	 */
 	public function isThisServiceLastLogin()
 	{
-		if ($this->getSocialLoginCookie() == self::SOCIAL_NAME) {
-			return true;
-		} else {
-			return false;
-		}
+		return $this->getSocialLoginCookie() == self::SOCIAL_NAME;
 	}
 }

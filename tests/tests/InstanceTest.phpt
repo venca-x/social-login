@@ -50,7 +50,6 @@ class InstanceTest extends Tester\TestCase
 		Assert::same('code', $urlParseQueryArray['response_type']);
 		Assert::same('http://www.muj-web.cz/homepage/facebook-login', $urlParseQueryArray['redirect_uri']);
 		Assert::same('email', $urlParseQueryArray['scope']);
-		Assert::same('https://www.mypage.cz/sign/facebook', $urlParseQueryArray['state']);
 	}
 
 
