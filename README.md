@@ -12,8 +12,8 @@ Nette addon for login with social networks
 
 | Version     | Facebook App API | PHP     | Recommended Nette             |
 | ---         | ---              | ---     | ---                           |
-| dev-master  | 8.0 or own       | \>= 7.2 | Nette 3.0                     |
-| 1.2.x       | 8.0 or own       | \>= 7.2 | Nette 3.0                     |
+| dev-master  | 8.0 or own       | \>= 7.2 (support 8.0) | Nette 3.0                     |
+| 1.2.x       | 8.0 or own       | \>= 7.2 (support 8.0) | Nette 3.0                     |
 | 1.1.x       | 2.6              | \>= 7.0 | Nette 2.4 (Nette\SmartObject) |
 | 1.0.x       | 2.6              | \>= 5.5 | Nette 2.4, 2.3 (Nette\Object) |
 
@@ -22,7 +22,7 @@ Nette addon for login with social networks
 Installation
 ------------
 
-Install **dev-master** version for **Nette 3.0** (**!!!needs at least PHP 7.1!!!**):
+Install **dev-master** version for **Nette 3.0**:
 ```
 composer require venca-x/social-login:dev-master
 ```
@@ -173,11 +173,6 @@ HomepagePresenter.php
     
     //render where are links to social networks  
     public function renderIn() {
-        if ($this->backlink) {
-            $this->socialLogin->facebook->setState($this->backlink);
-            $this->socialLogin->google->setState($this->backlink);
-        }
-        
         //$facebookLoginUrl = $this->socialLogin->facebook->getLoginUrl();
         //$googleLoginUrl = $this->socialLogin->google->getLoginUrl();
         //$twitterLoginUrl = $this->socialLogin->twitter->getLoginUrl();
