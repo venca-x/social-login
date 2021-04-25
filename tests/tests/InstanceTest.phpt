@@ -32,7 +32,6 @@ class InstanceTest extends Tester\TestCase
 	public function testFacebookLoginUrl()
 	{
 		$this->socialLogin->facebook->setScope(['email']);
-		$this->socialLogin->facebook->setState('https://www.mypage.cz/sign/facebook');
 
 		$url = $this->socialLogin->facebook->getLoginUrl();
 
