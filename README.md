@@ -189,7 +189,7 @@ HomepagePresenter.php
         try
         {
             if ($state) $this->backlink = $state;
-            $me = $this->socialLogin->facebook->getMe( array( FacebookLogin::ID, FacebookLogin::EMAIL, FacebookLogin::NAME, FacebookLogin::FIRST_NAME, FacebookLogin::LAST_NAME ) );
+            $me = $this->socialLogin->facebook->getMe();
             //dump( $me );
             //exit();
             if($this->backlink != null) {
