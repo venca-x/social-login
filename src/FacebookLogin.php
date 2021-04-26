@@ -298,8 +298,7 @@ class FacebookLogin extends BaseLogin
 		$cookieName,
 		Nette\Http\IResponse $httpResponse,
 		Nette\Http\IRequest $httpRequest
-	)
-	{
+	) {
 		$this->params = $params;
 		$this->cookieName = $cookieName;
 		$this->httpResponse = $httpResponse;

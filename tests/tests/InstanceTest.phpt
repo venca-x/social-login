@@ -55,7 +55,6 @@ class InstanceTest extends Tester\TestCase
 	public function testGoogleLoginUrl()
 	{
 		$this->socialLogin->google->setScope(['https://www.googleapis.com/auth/plus.me', 'https://www.googleapis.com/auth/userinfo.email']);
-		$this->socialLogin->google->setState('https://www.mypage.cz/sign/google');
 
 		$url = $this->socialLogin->google->getLoginUrl();
 
@@ -74,7 +73,6 @@ class InstanceTest extends Tester\TestCase
 		Assert::same('123456789', $urlParseQueryArray['client_id']);
 		Assert::same('http://www.muj-web.cz/homepage/google-login', $urlParseQueryArray['redirect_uri']);
 		Assert::same('https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.email', $urlParseQueryArray['scope']);
-		Assert::same('https://www.mypage.cz/sign/google', $urlParseQueryArray['state']);
 	}
 
 
