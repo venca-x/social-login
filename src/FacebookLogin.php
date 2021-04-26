@@ -289,6 +289,9 @@ class FacebookLogin extends BaseLogin
 	/** @var string scope */
 	private $scope = [];
 
+	/** @var string state */
+	private $state;
+
 	/** @var string callBackUrl */
 	private $callBackUrl = '';
 
@@ -331,12 +334,26 @@ class FacebookLogin extends BaseLogin
 
 
 	/**
+	 * Set state
+	 * @param string $state
+	 */
+	public function setState($state)
+	{
+		$this->state = $state;
+	}
+
+
+	/**
 	 * Get URL for login
 	 * @return string
 	 */
 	public function getLoginUrl()
 	{
-		$loginUrl = $this->provider->getAuthorizationUrl(['scope' => $this->scope]);
+		$options = ['scope' => $this->scope];
+		if ($this->state != null) {
+			$options['state'] = $this->state;
+		}
+		$loginUrl = $this->provider->getAuthorizationUrl($options);
 		$_SESSION['oauth2state'] = $this->provider->getState();
 		return $loginUrl;
 	}
