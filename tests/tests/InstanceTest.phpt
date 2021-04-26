@@ -32,6 +32,7 @@ class InstanceTest extends Tester\TestCase
 	public function testFacebookLoginUrl()
 	{
 		$this->socialLogin->facebook->setScope(['email']);
+		$this->socialLogin->facebook->setState('https://www.mypage.cz/sign/facebook');
 
 		$url = $this->socialLogin->facebook->getLoginUrl();
 
@@ -49,12 +50,14 @@ class InstanceTest extends Tester\TestCase
 		Assert::same('code', $urlParseQueryArray['response_type']);
 		Assert::same('http://www.muj-web.cz/homepage/facebook-login', $urlParseQueryArray['redirect_uri']);
 		Assert::same('email', $urlParseQueryArray['scope']);
+		Assert::same('https://www.mypage.cz/sign/facebook', $urlParseQueryArray['state']);
 	}
 
 
 	public function testGoogleLoginUrl()
 	{
 		$this->socialLogin->google->setScope(['https://www.googleapis.com/auth/plus.me', 'https://www.googleapis.com/auth/userinfo.email']);
+		$this->socialLogin->google->setState('https://www.mypage.cz/sign/google');
 
 		$url = $this->socialLogin->google->getLoginUrl();
 
@@ -73,6 +76,7 @@ class InstanceTest extends Tester\TestCase
 		Assert::same('123456789', $urlParseQueryArray['client_id']);
 		Assert::same('http://www.muj-web.cz/homepage/google-login', $urlParseQueryArray['redirect_uri']);
 		Assert::same('https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.email', $urlParseQueryArray['scope']);
+		Assert::same('https://www.mypage.cz/sign/google', $urlParseQueryArray['state']);
 	}
 
 

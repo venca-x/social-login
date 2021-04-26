@@ -173,6 +173,11 @@ HomepagePresenter.php
     
     //render where are links to social networks  
     public function renderIn() {
+        if ($this->backlink) {
+            $this->socialLogin->facebook->setState($this->backlink);
+            $this->socialLogin->google->setState($this->backlink);
+        }
+
         //$facebookLoginUrl = $this->socialLogin->facebook->getLoginUrl();
         //$googleLoginUrl = $this->socialLogin->google->getLoginUrl();
         //$twitterLoginUrl = $this->socialLogin->twitter->getLoginUrl();
