@@ -48,7 +48,6 @@ jobs:
     allow_failures:
         - stage: Code Coverage
         - env: title="Lowest Dependencies"
-        - php: 8.0
 
 
 sudo: false
