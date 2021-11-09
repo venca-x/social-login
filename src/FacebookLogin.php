@@ -385,7 +385,9 @@ class FacebookLogin extends BaseLogin
 			}
 
 		} else {
-			unset($_SESSION['oauth2state']);
+			if (in_array('oauth2state', $_SESSION, true)) {
+				unset($_SESSION['oauth2state']);
+			}
 			throw new Exception('Invalid state');
 		}
 	}
