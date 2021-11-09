@@ -5,3 +5,5 @@
 /tests/tests/output
 /tests/tests/temp
 /package-lock.json
+/nette-code-checker
+/nette-coding-standard
