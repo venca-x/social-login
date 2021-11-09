@@ -1,7 +1,7 @@
 social-login
 ===============
 
-[![Build Status](https://travis-ci.org/venca-x/social-login.svg?branch=master)](https://travis-ci.org/github/venca-x/social-login)
+[![Build Status](https://app.travis-ci.com/venca-x/social-login.svg?branch=master)](https://app.travis-ci.com/github/venca-x/social-login)
 [![Coverage Status](https://coveralls.io/repos/github/venca-x/social-login/badge.svg?branch=master)](https://coveralls.io/github/venca-x/social-login?branch=master) 
 [![Latest Stable Version](https://poser.pugx.org/venca-x/social-login/v/stable.svg)](https://packagist.org/packages/venca-x/social-login) 
 [![Latest Unstable Version](https://poser.pugx.org/venca-x/social-login/v/unstable.svg)](https://packagist.org/packages/venca-x/social-login) 
