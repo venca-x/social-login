@@ -35,7 +35,7 @@ jobs:
                 - travis_retry composer create-project nette/coding-standard temp/coding-standard --no-progress
             script:
                 - php temp/code-checker/code-checker -d src -d tests --short-arrays --strict-types
-                - php temp/coding-standard/ecs check src tests --preset php71
+                - php temp/coding-standard/ecs check src tests --preset php74
 
         -   stage: Code Coverage
             php: 7.4
