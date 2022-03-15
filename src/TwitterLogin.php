@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace VencaX;
@@ -61,7 +62,7 @@ class TwitterLogin extends BaseLogin
 			'oauth/request_token',
 			[
 				'oauth_callback' => $this->params['callbackURL'],
-			]
+			],
 		);
 
 		$sessionSection = $this->session->getSection('twitter');
@@ -72,7 +73,7 @@ class TwitterLogin extends BaseLogin
 			'oauth/authorize',
 			[
 				'oauth_token' => $this->requestToken['oauth_token'],
-			]
+			],
 		);
 		return $loginUrl;
 	}
@@ -103,7 +104,7 @@ class TwitterLogin extends BaseLogin
 			'oauth/access_token',
 			[
 				'oauth_verifier' => $oauthVerifier,
-			]
+			],
 		);
 
 		$this->twitterOAuth = new Abraham\TwitterOAuth\TwitterOAuth($this->params['consumerKey'], $this->params['consumerSecret'], $access_token['oauth_token'], $access_token['oauth_token_secret']);
