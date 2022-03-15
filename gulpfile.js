@@ -13,8 +13,8 @@ gulp.task('shell_create_project_coding_checker', shell.task('composer create-pro
 
 gulp.task('shell_netteCodeChecker', shell.task('php .\\nette-code-checker\\code-checker -d src --short-arrays --strict-types'));
 gulp.task('shell_netteCodeCheckerFIX', shell.task('php .\\nette-code-checker\\code-checker -d src --short-arrays --strict-types --fix'));
-gulp.task('shell_netteCodingStandard', shell.task('php .\\nette-coding-standard\\ecs check src tests --preset php71'));
-gulp.task('shell_netteCodingStandardFIX', shell.task('php .\\nette-coding-standard\\ecs check src tests --preset php71 --fix'));
+gulp.task('shell_netteCodingStandard', shell.task('php .\\nette-coding-standard\\ecs check src tests --preset php74'));
+gulp.task('shell_netteCodingStandardFIX', shell.task('php .\\nette-coding-standard\\ecs check src tests --preset php74 --fix'));
 
 
 gulp.task('default', gulp.series('shell_npm_update', 'shell_composer_self_update', 'shell_composer_update'));
