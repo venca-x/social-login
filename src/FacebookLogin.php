@@ -368,7 +368,7 @@ class FacebookLogin extends BaseLogin
 	public function getMe($fields = null)
 	{
 		$state = $this->httpRequest->getQuery('state');
-		if ($state !== null && isset($_SESSION) && in_array('oauth2state', $_SESSION) && $state == $_SESSION['oauth2state']) {
+		if ($state !== null && isset($_SESSION) && array_key_exists('oauth2state', $_SESSION) && $state == $_SESSION['oauth2state']) {
 
 			// Try to get an access token (using the authorization code grant)
 			$token = $this->provider->getAccessToken('authorization_code', [
@@ -385,7 +385,7 @@ class FacebookLogin extends BaseLogin
 			}
 
 		} else {
-			if (isset($_SESSION) && in_array('oauth2state', $_SESSION)) {
+			if (isset($_SESSION) && array_key_exists('oauth2state', $_SESSION)) {
 				unset($_SESSION['oauth2state']);
 			}
 			throw new Exception('Invalid state');
