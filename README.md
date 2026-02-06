@@ -88,7 +88,7 @@ BasePresenter.php
         
         //set scope
         $this->socialLogin->facebook->setScope( ['email'] );
-        $this->socialLogin->google->setScope( array( "https://www.googleapis.com/auth/plus.me", "https://www.googleapis.com/auth/userinfo.email" ) );		
+        $this->socialLogin->google->setScope( array( "https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email" ) );
     }
 
     public function renderIn() {
